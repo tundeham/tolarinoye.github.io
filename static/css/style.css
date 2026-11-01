@@ -170,7 +170,7 @@ ul, ol { margin: 0; padding: 0; }
 .current .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent); margin-right: 6px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .hero-portrait img, .monogram {
-  width: clamp(180px, 22vw, 260px); aspect-ratio: 1; border-radius: 50%; object-fit: cover;
+  width: clamp(180px, 22vw, 260px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover;
   border: 1px solid var(--line); box-shadow: 0 0 0 10px var(--bg-alt);
 }
 .monogram {
