@@ -1,0 +1,33 @@
+# ---------------------------------------------------------------------------
+# EXPERTISE & LEADERSHIP: four to six competency areas shown as cards.
+# DRAFT wording built from your verified record: please review/adjust.
+#   evidence: concrete proof points (keep them factual and checkable)
+# ---------------------------------------------------------------------------
+
+- title: Water-resources science
+  text: Groundwater and karst hydrology, from process understanding to large-scale assessment of how aquifers respond to climate and land-use change.
+  evidence:
+    - First global open database of karst spring discharge (400+ springs)
+    - Automated methods for recession analysis and classification
+    - Scenario assessment of urbanisation and climate effects on groundwater
+
+- title: Data, digital & open science
+  text: Building and curating hydrological datasets, workflows and data services that others can find, trust and reuse.
+  evidence:
+    - Led WoKaS, a community-sourced global dataset published openly
+    - Data products and web services for the International Soil Moisture Network
+    - Machine learning and large-sample methods in hydrology
+
+- title: Evidence for decision-making
+  text: Translating technical results into clear, usable evidence for planners, managers and policy makers working on water security and climate adaptation.
+  evidence:
+    - Resource assessments designed for water-management use
+    - Climate and urbanisation scenarios for a fast-growing African city (Arusha)
+    - Public-facing communication for a global monitoring network
+
+- title: International collaboration & capacity
+  text: Working across institutions, disciplines and countries, and developing the next generation of water professionals.
+  evidence:
+    - Joint M.Sc. across three European universities; research in four countries
+    - Co-convened an EGU session; organising committee of the 46th IAH Congress
+    - Supervised Bachelor's and Master's theses; guest lecturer at IHE Delft

@@ -1,0 +1,32 @@
+# ---------------------------------------------------------------------------
+# FLAGSHIP INITIATIVES: shown in the "Impact" section.
+#   role / years / summary / outcome are free text; link is optional.
+# ---------------------------------------------------------------------------
+
+- name: World Karst Spring Hydrographs (WoKaS)
+  role: Lead
+  years: "2018–2020"
+  summary: Compiled the first global open database of karst spring discharge from literature, hydrological databases and researchers worldwide.
+  outcome: 400+ springs; published in Scientific Data (2020) and now supports comparative karst research.
+  link: https://doi.org/10.1038/s41597-019-0346-5
+
+- name: Automated karst recession analysis
+  role: First author
+  years: "2019–2022"
+  summary: Developed objective, automated methods to separate and classify fast- and slow-flow components of spring recession.
+  outcome: Replaces manual, subjective analysis and makes large-sample studies feasible (HESS, 2022).
+  link: https://doi.org/10.5194/hess-26-5431-2022
+
+- name: International Soil Moisture Network (ISMN)
+  role: Data acquisition, products & web
+  years: "Current"
+  summary: Acquire in-situ soil-moisture data and develop data products, and lead public outreach and front-end development for this global service.
+  outcome: Open, quality-controlled global soil-moisture data for research, climate and water applications.
+  link: https://ismn.earth
+
+- name: Groundwater under urbanisation and climate change, Arusha
+  role: Lead author
+  years: "2017–2018"
+  summary: Explored how urban growth and climate change jointly affect groundwater resources in a fast-growing East African city.
+  outcome: Published in Water International (2020) with partners from Tanzania and the Netherlands.
+  link: https://doi.org/10.1080/02508060.2020.1768724

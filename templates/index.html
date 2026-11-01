@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block content %}
+{% set p = profile %}
+{# ================================================================ HERO #}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">{{ p.headline }}</p>
+      <h1>{{ p.name }}{% if p.postnominal %}<span class="postnominal">, {{ p.postnominal }}</span>{% endif %}</h1>
+      <p class="lead">{{ p.tagline }}</p>
+      {% if p.current_position %}
+      <p class="current">
+        <span class="dot" aria-hidden="true"></span>
+        {{ p.current_position.title }} ·
+        <a href="{{ p.current_position.url }}" target="_blank" rel="noopener">{{ p.current_position.organisation }}</a>
+      </p>
+      <p class="location muted">{{ p.location }}</p>
+      {% endif %}
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="cv/">View CV</a>
+        <a class="btn" href="#publications">Publications</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <img src="{{ p.photo }}" alt="{% if p.photo_is_placeholder %}Portrait placeholder{% else %}Portrait of {{ p.name }}{% endif %}" width="280" height="280">
+    </div>
+  </div>
+
+  <figure class="hydrograph container" aria-hidden="true">
+    <svg viewBox="0 0 {{ hydro.width }} {{ hydro.height }}" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="hg-fill" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="var(--accent)" stop-opacity=".18"/>
+          <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="{{ hydro.area }}" fill="url(#hg-fill)"/>
+      <path class="hg-line" pathLength="1" d="{{ hydro.line }}" fill="none" stroke="var(--accent)" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <figcaption><b>Fig. 1</b>: Synthetic karst-spring hydrograph: rapid conduit-flow peaks receding into slow matrix baseflow.</figcaption>
+  </figure>
+</section>
+
+{# ================================================================ ABOUT #}
+<section id="about" class="section">
+  <div class="container section-grid">
+    {{ m.section_head("01", "About", "Profile") }}
+    <div class="section-body prose">
+      {% for para in p.about %}<p>{{ para }}</p>{% endfor %}
+      {% if p.regions %}<p class="regions"><span class="label">Experience in</span> {{ p.regions | join(' · ') }}</p>{% endif %}
+      <h3 class="subhead">Research interests</h3>
+      <ul class="chips">
+        {% for r in p.research_interests %}<li>{{ r }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{# ================================================================ EXPERTISE #}
+<section id="expertise" class="section section-alt">
+  <div class="container section-grid">
+    {{ m.section_head("02", "Expertise", "Expertise & leadership") }}
+    <div class="section-body">
+      <div class="cards cards-2">
+        {% for e in expertise %}
+        <article class="card">
+          <h3 class="card-title">{{ e.title }}</h3>
+          <p class="card-text">{{ e.text }}</p>
+          <ul class="card-list">{% for x in e.evidence %}<li>{{ x }}</li>{% endfor %}</ul>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ================================================================ IMPACT #}
+<section id="impact" class="section">
+  <div class="container section-grid">
+    {{ m.section_head("03", "Impact", "Contributions at a glance") }}
+    <div class="section-body">
+      <div class="stats">
+        {% for s in p.impact %}
+        <div class="stat">
+          <p class="stat-value">{{ s.value }}</p>
+          <p class="stat-label">{{ s.label }}</p>
+          <p class="stat-detail">{{ s.detail }}</p>
+        </div>
+        {% endfor %}
+        <div class="stat">
+          <p class="stat-value">{{ stats.articles }}</p>
+          <p class="stat-label">peer-reviewed articles</p>
+          <p class="stat-detail">in journals such as <em>Scientific Data</em> and <em>HESS</em></p>
+        </div>
+        <div class="stat">
+          <p class="stat-value">{{ stats.talks }}</p>
+          <p class="stat-label">conference contributions</p>
+          <p class="stat-detail">EGU, AGU, IAH Congress, EuroKarst and more</p>
+        </div>
+      </div>
+
+      <h3 class="subhead">Flagship initiatives</h3>
+      <div class="cards cards-2">
+        {% for pr in projects %}
+        <article class="card">
+          <p class="card-meta">{{ pr.role }} · {{ pr.years }}</p>
+          <h4 class="card-title">{% if pr.link %}<a href="{{ pr.link }}" target="_blank" rel="noopener">{{ pr.name }}</a>{% else %}{{ pr.name }}{% endif %}</h4>
+          <p class="card-text">{{ pr.summary }}</p>
+          <p class="card-outcome"><span class="label">Outcome</span> {{ pr.outcome }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ================================================================ EXPERIENCE #}
+<section id="experience" class="section">
+  <div class="container section-grid">
+    {{ m.section_head("04", "Experience", "Professional experience") }}
+    <div class="section-body">
+      <ol class="timeline">
+        {% for job in experience %}
+        <li class="tl-item">
+          <p class="tl-date">{{ job.start | daterange(job.end) }}</p>
+          <div class="tl-body">
+            <h3 class="tl-title">{{ job.role }}</h3>
+            <p class="tl-org">
+              {% if job.url %}<a href="{{ job.url }}" target="_blank" rel="noopener">{{ job.organisation }}</a>{% else %}{{ job.organisation }}{% endif %}
+              {% if job.location %}<span class="muted"> · {{ job.location }}</span>{% endif %}
+            </p>
+            {% if job.highlights %}
+            <ul class="tl-points">{% for h in job.highlights %}<li>{{ h }}</li>{% endfor %}</ul>
+            {% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+
+{# ================================================================ EDUCATION #}
+<section id="education" class="section section-alt">
+  <div class="container section-grid">
+    {{ m.section_head("05", "Education", "Academic background") }}
+    <div class="section-body">
+      <ol class="timeline">
+        {% for ed in education %}
+        <li class="tl-item">
+          <p class="tl-date">{{ ed.start | daterange(ed.end) }}</p>
+          <div class="tl-body">
+            <h3 class="tl-title">{{ ed.degree }}</h3>
+            <p class="tl-org">{{ ed.institution }}<span class="muted"> · {{ ed.location }}</span></p>
+            {% if ed.thesis %}<p class="tl-note"><span class="label">Thesis</span> <em>{{ ed.thesis }}</em></p>{% endif %}
+            {% if ed.details %}<ul class="tl-points">{% for d in ed.details %}<li>{{ d }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+
+{# ================================================================ PUBLICATIONS #}
+<section id="publications" class="section">
+  <div class="container section-grid">
+    {{ m.section_head("06", "Publications", "Research output") }}
+    <div class="section-body">
+      {% if pub_types | length > 1 %}
+      <div class="filters" role="group" aria-label="Filter publications">
+        <button class="filter is-active" data-filter="all" aria-pressed="true">All <span>{{ publications | length }}</span></button>
+        {% for key, label in pub_types %}
+        <button class="filter" data-filter="{{ key }}" aria-pressed="false">{{ label }} <span>{{ publications | selectattr('type', 'equalto', key) | list | length }}</span></button>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <ol class="pubs" reversed>
+        {% for pub in publications %}
+        <li class="pub" data-type="{{ pub.type }}" data-n="{{ publications | length - loop.index0 }}">
+          <p class="pub-cite">{{ m.citation(pub, p.surname) }}</p>
+          <p class="pub-links">{{ m.pub_links(pub) }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+      {% if p.links.scholar %}
+      <p class="more"><a href="{{ p.links.scholar }}" target="_blank" rel="noopener">Full list &amp; citations on Google Scholar →</a></p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{# ================================================================ TALKS #}
+<section id="talks" class="section section-alt">
+  <div class="container section-grid">
+    {{ m.section_head("07", "Talks", "Conference contributions") }}
+    <div class="section-body">
+      <ul class="talks">
+        {% for t in presentations %}
+        <li class="talk">
+          <span class="talk-year">{{ t.year }}</span>
+          <span class="talk-body">
+            <span class="talk-title">{{ t.title }}</span>
+            <span class="talk-event">{{ t.event }} · {{ t.location }}</span>
+          </span>
+          <span class="tag">{{ t.kind }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{# ================================================================ WORK WITH ME #}
+<section id="consulting" class="section">
+  <div class="container section-grid">
+    {{ m.section_head("08", "Work with me", "Consulting & collaboration") }}
+    <div class="section-body">
+      <p class="lead-sm">{{ consulting.intro }}</p>
+      <h3 class="subhead">What I offer</h3>
+      <div class="services">
+        {% for sv in consulting.services %}
+        <div class="service">
+          <h4>{{ sv.title }}</h4>
+          <p>{{ sv.text }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="two-col">
+        <div>
+          <h3 class="subhead">Ways to engage</h3>
+          <ul class="chips chips-sm">{% for x in consulting.engagements %}<li>{{ x }}</li>{% endfor %}</ul>
+        </div>
+        <div>
+          <h3 class="subhead">Who I work with</h3>
+          <ul class="chips chips-sm">{% for x in consulting.audiences %}<li>{{ x }}</li>{% endfor %}</ul>
+        </div>
+      </div>
+      {% if p.links.email %}
+      <p class="cta"><a class="btn btn-primary" href="mailto:{{ p.links.email | obfuscate }}?subject=Enquiry%20via%20your%20website">Discuss an opportunity</a></p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{# ================================================================ TEACHING / SERVICE / SKILLS #}
+<section id="activities" class="section section-alt">
+  <div class="container section-grid">
+    {{ m.section_head("09", "Activities", "Teaching, service &amp; skills" | safe) }}
+    <div class="section-body">
+      <div class="two-col">
+        <div>
+          <h3 class="subhead">Teaching &amp; supervision</h3>
+          <ul class="plain-list">
+            {% for t in activities.teaching %}<li><span class="mono muted">{{ t.year }}</span> {{ t.title }}, <span class="muted">{{ t.where }}</span></li>{% endfor %}
+          </ul>
+        </div>
+        <div>
+          <h3 class="subhead">Academic service</h3>
+          <ul class="plain-list">
+            {% for s in activities.service %}<li><span class="mono muted">{{ s.year }}</span> {{ s.title }}, <span class="muted">{{ s.where }}</span></li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% if activities.memberships or activities.awards %}
+      <div class="two-col">
+        {% if activities.memberships %}
+        <div>
+          <h3 class="subhead">Memberships</h3>
+          <ul class="plain-list">{% for x in activities.memberships %}<li>{{ x.name }}{% if x.since %} <span class="muted">(since {{ x.since }})</span>{% endif %}</li>{% endfor %}</ul>
+        </div>
+        {% endif %}
+        {% if activities.awards %}
+        <div>
+          <h3 class="subhead">Awards &amp; fellowships</h3>
+          <ul class="plain-list">{% for x in activities.awards %}<li><span class="mono muted">{{ x.year }}</span> {{ x.title }}{% if x.where %}, <span class="muted">{{ x.where }}</span>{% endif %}</li>{% endfor %}</ul>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% if activities.peer_review %}
+      <h3 class="subhead">Peer review</h3>
+      <p>Reviewer for {{ activities.peer_review.journals | join(', ') }}.</p>
+      {% endif %}
+      <h3 class="subhead">Skills</h3>
+      <div class="skills">
+        {% for group, items in activities.skills.items() %}
+        <div class="skill-group">
+          <p class="skill-head">{{ group }}</p>
+          <ul class="chips chips-sm">{% for s in items %}<li>{{ s }}</li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ================================================================ CONTACT #}
+<section id="contact" class="section">
+  <div class="container section-grid">
+    {{ m.section_head("10", "Contact", "Let's connect") }}
+    <div class="section-body">
+      <p class="lead-sm">For senior roles, consultancy, collaboration or speaking invitations, email is the quickest way to reach me.</p>
+      {{ m.profile_links(p.links) }}
+      <p class="muted small">Based in {{ p.location }} · available for international assignments</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

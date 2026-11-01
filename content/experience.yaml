@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------------------
+# PROFESSIONAL EXPERIENCE: newest first.
+#   end: leave empty for "Present"
+#   highlights: bullet points (keep them outcome-oriented)
+# ---------------------------------------------------------------------------
+
+- role: Scientific Officer
+  organisation: International Centre for Water Resources and Global Change (ICWRGC), UNESCO
+  url: https://waterandchange.org/en/
+  location: Koblenz, Germany
+  start: "2021"              # TODO verify start year
+  end: ""
+  highlights:
+    - Data acquisition and development of soil-moisture data products for the International Soil Moisture Network (ISMN).
+    - Public relations and front-end web development for ISMN data services.
+    - Co-convened the large-sample hydrology session at the EGU General Assembly 2022 (Vienna).
+
+- role: Scientific Employee / Doctoral Researcher
+  organisation: Chair of Hydrological Modelling and Water Resources, University of Freiburg
+  url: https://www.hydmod.uni-freiburg.de/
+  location: Freiburg, Germany
+  start: "2018"
+  end: "2021"
+  highlights:
+    - Led the development of WoKaS, the first global open karst-spring hydrograph database (400+ springs).
+    - Developed automated recession-extraction and classification methods for karst springs.
+    - Co-supervised Bachelor's and Master's theses.
+
+- role: Graduate Researcher
+  organisation: IHE Delft Institute for Water Education (UNESCO-IHE)
+  url: https://www.un-ihe.org/
+  location: Delft, the Netherlands
+  start: "2017"
+  end: "2018"
+  highlights:
+    - Assessed the future impacts of urbanisation and climate change on groundwater in Arusha, Tanzania (published in Water International).
+
+- role: Research Intern
+  organisation: Deltares
+  url: https://www.deltares.nl/en
+  location: Utrecht, the Netherlands
+  start: "2016"
+  end: "2016"
+  highlights:
+    - TODO describe the internship project in one or two lines.
+
+# TODO add any earlier positions (e.g. in Nigeria, 2011–2015).

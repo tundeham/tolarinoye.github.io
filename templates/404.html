@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Page not found · {{ profile.name }}{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+{# 404 pages can be served from any URL depth, so use absolute links here #}
+<div class="container narrow notfound">
+  <p class="eyebrow"><span class="num">404</span>Not found</p>
+  <h1>This page has receded.</h1>
+  <p class="lead">Like a karst spring in a dry season, the page you're looking for isn't flowing here.</p>
+  <p><a class="btn btn-primary" href="{{ site_url }}/">Back to the homepage</a></p>
+</div>
+{% endblock %}

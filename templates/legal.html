@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Imprint &amp; Privacy · {{ profile.name }}{% endblock %}
+{% block canonical %}legal/{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+<div class="container narrow prose legal">
+  <h1>Imprint &amp; Privacy</h1>
+
+  {# TODO: fill in. A German "Impressum" (§ 5 DDG) is generally expected for
+     sites with a professional purpose. This is a template, not legal advice. #}
+  <h2>Impressum / Imprint</h2>
+  <p>Angaben gemäß § 5 DDG</p>
+  <p>
+    {{ p.honorific }} {{ p.name }}<br>
+    [Street and number]<br>
+    [Postcode] {{ p.location.split(',')[0] }}<br>
+    Germany
+  </p>
+  <p>Contact: {% if p.links.email %}<a href="mailto:{{ p.links.email | obfuscate }}">{{ p.links.email | obfuscate }}</a>{% else %}[email address]{% endif %}</p>
+  <p>Responsible for content according to § 18 (2) MStV: {{ p.name }} (address as above).</p>
+
+  <h2>Privacy notice / Datenschutzerklärung</h2>
+  <p>
+    This is a private, non-commercial personal website. It does <strong>not</strong> use cookies,
+    analytics, tracking, embedded third-party content or externally loaded fonts.
+  </p>
+  <p>
+    The site is hosted by GitHub Pages (GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA).
+    When you visit, GitHub may log technical data such as your IP address for security and operation purposes.
+    See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.
+  </p>
+  <p>
+    If you contact me by e-mail, your data is used only to handle your request and is not shared with third parties.
+    You have the right to access, rectify and erase your personal data under the GDPR.
+  </p>
+  <p class="muted small">Disclaimer: I am not responsible for the content of external websites linked from this site.</p>
+</div>
+{% endblock %}

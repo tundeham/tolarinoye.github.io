@@ -1,0 +1,83 @@
+{% set p = profile %}
+{% set full_name = (p.honorific ~ ' ' if p.honorific else '') ~ p.name %}
+<!doctype html>
+<html lang="{{ p.site.language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ full_name }} · {{ p.headline }}{% endblock %}</title>
+  <meta name="description" content="{{ p.site.description }}">
+  <meta name="keywords" content="{{ p.site.keywords | join(', ') }}">
+  <meta name="author" content="{{ p.name }}">
+  <link rel="canonical" href="{{ site_url }}/{% block canonical %}{% endblock %}">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="{{ full_name }} · {{ p.headline }}">
+  <meta property="og:description" content="{{ p.site.description }}">
+  <meta property="og:url" content="{{ site_url }}/">
+  {% if p.photo and not p.photo_is_placeholder %}<meta property="og:image" content="{{ site_url }}/{{ p.photo }}">{% endif %}
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="{{ root }}img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ root }}css/style.css">
+  {# Set theme before paint to avoid a flash of the wrong colour scheme #}
+  <script>
+    (function () {
+      var t = localStorage.getItem("theme");
+      if (t) document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <script type="application/ld+json">{{ json_ld | tojson_ld }}</script>
+  {% block head %}{% endblock %}
+</head>
+<body class="page-{{ page | replace('.html', '') }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="brand" href="{{ root }}">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2.5C8.6 7 6 10.4 6 14a6 6 0 0 0 12 0c0-3.6-2.6-7-6-11.5Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.6 15.2c.6 1.6 1.9 2.6 3.6 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <span>{{ p.name }}</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="{{ root }}#about">About</a></li>
+        <li><a href="{{ root }}#expertise">Expertise</a></li>
+        <li><a href="{{ root }}#experience">Experience</a></li>
+        <li><a href="{{ root }}#publications">Publications</a></li>
+        <li><a href="{{ root }}#consulting">Work with me</a></li>
+        <li><a href="{{ root }}#contact">Contact</a></li>
+        <li><a class="nav-cv" href="{{ root }}cv/">CV</a></li>
+        <li>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© {{ build_date.year }} {{ p.name }} · {{ p.location }}<br>
+        <span class="muted small">Personal website. Views expressed are my own.</span></p>
+      <p class="footer-links">
+        <a href="{{ root }}cv/">CV</a>
+        {% if p.site.show_legal_page %}<a href="{{ root }}legal/">Imprint &amp; Privacy</a>{% endif %}
+        <span class="muted">Updated {{ build_date.strftime('%B %Y') }}</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="{{ root }}js/main.js" defer></script>
+</body>
+</html>

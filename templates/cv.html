@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Curriculum Vitae · {{ profile.name }}{% endblock %}
+{% block canonical %}cv/{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+<div class="container cv">
+  <div class="cv-toolbar no-print">
+    <a href="../" class="muted">← Back to website</a>
+    <button class="btn btn-primary" type="button" onclick="window.print()">Download PDF</button>
+  </div>
+
+  <header class="cv-header">
+    <div>
+      <h1>{{ p.honorific }} {{ p.name }}</h1>
+      <p class="cv-headline">{{ p.headline }} · {{ p.current_position.title }}, {{ p.current_position.organisation }}</p>
+    </div>
+    <ul class="cv-contact">
+      <li>{{ p.location }}</li>
+      {% if p.links.email %}<li><a href="mailto:{{ p.links.email | obfuscate }}">{{ p.links.email | obfuscate }}</a></li>{% endif %}
+      <li><a href="{{ site_url }}/">{{ site_url | replace('https://', '') }}</a></li>
+      {% if p.links.orcid %}<li><a href="{{ p.links.orcid }}">ORCID: {{ p.links.orcid.rsplit('/', 1)[-1] }}</a></li>{% endif %}
+      {% if p.links.linkedin %}<li><a href="{{ p.links.linkedin }}">LinkedIn</a></li>{% endif %}
+    </ul>
+  </header>
+
+  <section class="cv-section">
+    <h2>Profile</h2>
+    <p>{{ p.about[0] }}</p>
+  </section>
+
+  <section class="cv-section">
+    <h2>Core competencies</h2>
+    <dl class="cv-skills">
+      {% for e in expertise %}<dt>{{ e.title }}</dt><dd>{{ e.text }}</dd>{% endfor %}
+    </dl>
+  </section>
+
+  <section class="cv-section">
+    <h2>Professional experience</h2>
+    {% for job in experience %}
+    <div class="cv-entry">
+      <p class="cv-date">{{ job.start | daterange(job.end) }}</p>
+      <div>
+        <p class="cv-title">{{ job.role }}</p>
+        <p class="cv-org">{{ job.organisation }}, {{ job.location }}</p>
+        {% if job.highlights %}<ul>{% for h in job.highlights %}<li>{{ h }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="cv-section">
+    <h2>Education</h2>
+    {% for ed in education %}
+    <div class="cv-entry">
+      <p class="cv-date">{{ ed.start | daterange(ed.end) }}</p>
+      <div>
+        <p class="cv-title">{{ ed.degree }}</p>
+        <p class="cv-org">{{ ed.institution }}, {{ ed.location }}</p>
+        {% if ed.thesis %}<p class="cv-note">Thesis: <em>{{ ed.thesis }}</em></p>{% endif %}
+        {% if ed.details %}<ul>{% for d in ed.details %}<li>{{ d }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="cv-section">
+    <h2>Publications</h2>
+    {% for key, label in pub_types %}
+    <h3>{{ label }}</h3>
+    <ol class="cv-pubs">
+      {% for pub in publications if pub.type == key %}
+      <li>{{ m.citation(pub, p.surname) }}{% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">doi:{{ pub.doi }}</a>{% endif %}</li>
+      {% endfor %}
+    </ol>
+    {% endfor %}
+  </section>
+
+  <section class="cv-section">
+    <h2>Conference contributions</h2>
+    <ul class="cv-compact">
+      {% for t in presentations %}
+      <li><span class="cv-date-inline">{{ t.year }}</span> {{ t.title }}. <em>{{ t.event }}</em>, {{ t.location }} ({{ t.kind }}).</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="cv-section cv-two">
+    <div>
+      <h2>Teaching</h2>
+      <ul class="cv-compact">
+        {% for t in activities.teaching %}<li><span class="cv-date-inline">{{ t.year }}</span> {{ t.title }}, {{ t.where }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h2>Service</h2>
+      <ul class="cv-compact">
+        {% for s in activities.service %}<li><span class="cv-date-inline">{{ s.year }}</span> {{ s.title }}, {{ s.where }}</li>{% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Skills &amp; languages</h2>
+    <dl class="cv-skills">
+      {% for group, items in activities.skills.items() %}
+      <dt>{{ group }}</dt><dd>{{ items | join(' · ') }}</dd>
+      {% endfor %}
+      {% if activities.languages %}
+      <dt>Languages</dt><dd>{% for l in activities.languages %}{{ l.name }} ({{ l.level }}){% if not loop.last %} · {% endif %}{% endfor %}</dd>
+      {% endif %}
+    </dl>
+  </section>
+
+  <p class="cv-footer muted">Referees available on request. Last updated {{ build_date.strftime('%B %Y') }} · Online version: {{ site_url }}/cv/</p>
+</div>
+{% endblock %}

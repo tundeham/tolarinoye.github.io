@@ -1,0 +1,53 @@
+# ---------------------------------------------------------------------------
+# CONFERENCE CONTRIBUTIONS & INVITED TALKS: newest first.
+#   kind: talk | poster | invited | keynote | workshop
+# TODO titles below are condensed from your ICWRGC profile; paste the exact titles.
+# ---------------------------------------------------------------------------
+
+- year: 2022
+  kind: talk
+  title: The International Soil Moisture Network (ISMN)
+  event: EGU General Assembly
+  location: Vienna, Austria
+
+- year: 2020
+  kind: talk
+  title: Automatic recession extraction method for large samples of karst springs
+  event: AGU Fall Meeting
+  location: Online
+
+- year: 2020
+  kind: talk
+  title: Conduit and matrix recession coefficients of karst springs
+  event: Karst workshop
+  location: Kentucky, USA
+
+- year: 2019
+  kind: talk
+  title: Comparative karst hydrology using a global spring-discharge database
+  event: International Karstological School "Classical Karst"
+  location: Postojna, Slovenia
+
+- year: 2019
+  kind: talk
+  title: Comparative analysis of karst spring hydrographs using automatic recession methods
+  event: 46th IAH Congress
+  location: Málaga, Spain
+
+- year: 2019
+  kind: talk
+  title: The first global karst spring discharge database
+  event: EGU General Assembly
+  location: Vienna, Austria
+
+- year: 2018
+  kind: talk
+  title: Comparative karst hydrology
+  event: EuroKarst
+  location: Besançon, France
+
+- year: 2017
+  kind: poster
+  title: Hydrochemical water types in the Maputo coastal aquifer
+  event: 44th IAH Congress
+  location: Dubrovnik, Croatia

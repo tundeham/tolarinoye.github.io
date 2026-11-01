@@ -1,0 +1,49 @@
+{# Reusable snippets, imported with {% import "_macros.html" as m %} #}
+
+{% macro pub_links(pub) %}
+  {% if pub.doi %}<a class="tag-link" href="https://doi.org/{{ pub.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
+  {% if pub.url %}<a class="tag-link" href="{{ pub.url }}" target="_blank" rel="noopener">Link</a>{% endif %}
+  {% if pub.pdf %}<a class="tag-link" href="{{ pub.pdf }}" target="_blank" rel="noopener">PDF</a>{% endif %}
+  {% if pub.data %}<a class="tag-link" href="{{ pub.data }}" target="_blank" rel="noopener">Data</a>{% endif %}
+  {% if pub.code %}<a class="tag-link" href="{{ pub.code }}" target="_blank" rel="noopener">Code</a>{% endif %}
+  {% if pub.open_access %}<span class="tag oa" title="Open access">Open access</span>{% endif %}
+{% endmacro %}
+
+{% macro citation(pub, surname) %}
+  <span class="pub-authors">{{ pub.authors | authors(surname) }}</span>
+  <span class="pub-year">({{ pub.year }}).</span>
+  <span class="pub-title">{{ pub.title }}.</span>
+  <span class="pub-venue"><em>{{ pub.venue }}</em>{% if pub.details %}, {{ pub.details }}{% endif %}.</span>
+{% endmacro %}
+
+{% macro section_head(num, label, title) %}
+  <header class="section-head">
+    <p class="eyebrow"><span class="num">{{ num }}</span>{{ label }}</p>
+    <h2>{{ title }}</h2>
+  </header>
+{% endmacro %}
+
+{% macro link_icon(kind) %}
+  {% if kind == 'email' %}<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  {% elif kind == 'linkedin' %}<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  {% elif kind == 'orcid' %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 10v6M9 7.5v.01M12 8h2a4 4 0 0 1 0 8h-2V8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  {% elif kind == 'scholar' %}<svg viewBox="0 0 24 24"><path d="M2 9.5 12 4l10 5.5-10 5.5L2 9.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 12v4.5c3.5 2.5 8.5 2.5 12 0V12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  {% elif kind == 'github' %}<svg viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  {% else %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  {% endif %}
+{% endmacro %}
+
+{% macro profile_links(links) %}
+  {% set LINK_LABELS = {'email': 'Email', 'linkedin': 'LinkedIn', 'orcid': 'ORCID', 'scholar': 'Google Scholar', 'researchgate': 'ResearchGate', 'github': 'GitHub'} %}
+  <ul class="profile-links">
+    {% for kind, value in links.items() if value %}
+      <li>
+        {% if kind == 'email' %}
+          <a href="mailto:{{ value | obfuscate }}">{{ link_icon(kind) }}<span>{{ value | obfuscate }}</span></a>
+        {% else %}
+          <a href="{{ value }}" target="_blank" rel="noopener me">{{ link_icon(kind) }}<span>{{ LINK_LABELS.get(kind, kind | title) }}</span></a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}

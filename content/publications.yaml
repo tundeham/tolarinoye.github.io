@@ -1,0 +1,46 @@
+# ---------------------------------------------------------------------------
+# PUBLICATIONS: order doesn't matter; they're sorted by year (newest first).
+#   type:     article | preprint | thesis | dataset | chapter | report
+# Your surname (profile.yaml → surname) is highlighted automatically.
+# ---------------------------------------------------------------------------
+
+- type: article
+  year: 2022
+  authors: ["Olarinoye, T.", "Gleeson, T.", "Hartmann, A."]
+  title: "Karst spring recession and classification: efficient, automated methods for both fast- and slow-flow components"
+  venue: Hydrology and Earth System Sciences
+  details: "26, 5431–5447"
+  doi: 10.5194/hess-26-5431-2022
+  open_access: true
+
+- type: article
+  year: 2021
+  authors: ["Hartmann, A.", "Liu, Y.", "Olarinoye, T.", "Berthelin, R.", "Marx, V."]
+  title: Integrating field work and large-scale modeling to improve assessment of karst water resources
+  venue: Hydrogeology Journal
+  details: "29, 315–329"        # TODO verify volume/pages
+  doi: 10.1007/s10040-020-02258-z
+  open_access: true
+
+- type: article
+  year: 2020
+  authors: ["Olarinoye, T.", "Gleeson, T.", "Marx, V.", "et al."]
+  title: Global karst springs hydrograph dataset for research and management of the world's fastest-flowing groundwater
+  venue: Scientific Data
+  details: "7, 59"
+  doi: 10.1038/s41597-019-0346-5
+  open_access: true
+
+- type: article
+  year: 2020
+  authors: ["Olarinoye, T.", "Foppen, J. W.", "Veerbeek, W.", "Morienyane, T.", "Komakech, H."]
+  title: Exploring the future impacts of urbanization and climate change on groundwater in Arusha, Tanzania
+  venue: Water International
+  doi: 10.1080/02508060.2020.1768724
+
+- type: thesis
+  year: 2022                    # TODO verify
+  authors: ["Olarinoye, T."]
+  title: Unravelling the hydrodynamic behaviour of karst aquifer systems through comparative hydrology
+  venue: Ph.D. thesis, University of Freiburg
+  url: ""                       # TODO link to FreiDok repository entry

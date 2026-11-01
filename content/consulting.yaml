@@ -1,0 +1,40 @@
+# ---------------------------------------------------------------------------
+# WORK WITH ME: consultancy, advisory roles and collaboration.
+# DRAFT: review every line, and remove anything you do not want to offer.
+# ---------------------------------------------------------------------------
+
+intro: >-
+  I support governments, international organisations, development partners and
+  research institutions with science-based, practical water-resources work.
+  I am open to senior advisory and leadership roles, consultancy assignments
+  and research collaborations.
+
+services:
+  - title: Groundwater & karst assessment
+    text: Resource assessment, aquifer characterisation and sustainable-yield studies, including data-scarce settings.
+  - title: Hydrological data & modelling
+    text: Data analysis, hydrological and machine-learning models, and uncertainty-aware assessments.
+  - title: Water data systems
+    text: Design of data collection, quality control, management and open-data platforms for water institutions.
+  - title: Climate & urbanisation impacts
+    text: Scenario analysis for water security, adaptation planning and infrastructure decisions.
+  - title: Policy briefs & scientific advice
+    text: Reviews, technical reports and plain-language briefs that turn evidence into options for decision makers.
+  - title: Training & capacity development
+    text: Workshops, lectures and mentoring for water professionals, students and technical staff.
+
+engagements:
+  - Senior advisory & leadership roles
+  - Consultancy assignments
+  - Research collaboration
+  - Advisory boards & expert panels
+  - Keynotes & invited talks
+  - Training & workshops
+  - Peer review
+
+audiences:
+  - International & UN organisations
+  - Government ministries & agencies
+  - Development partners & NGOs
+  - Universities & research institutes
+  - Private sector

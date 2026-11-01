@@ -1,0 +1,26 @@
+# ---------------------------------------------------------------------------
+# EDUCATION: newest first.
+# ---------------------------------------------------------------------------
+
+- degree: Ph.D. in Hydrology
+  institution: University of Freiburg
+  location: Freiburg, Germany
+  start: "2018"
+  end: "2022"                 # TODO verify year of award
+  thesis: Unravelling the hydrodynamic behaviour of karst aquifer systems through comparative hydrology
+
+- degree: Erasmus Mundus Joint M.Sc. in Groundwater and Global Change (GroundwatCh)
+  institution: IHE Delft · Instituto Superior Técnico Lisbon · TU Dresden
+  location: the Netherlands · Portugal · Germany
+  start: "2015"
+  end: "2017"
+  details:
+    - M.Sc. Water Science and Engineering, IHE Delft Institute for Water Education
+    - M.Sc. Environmental Engineering, Instituto Superior Técnico, University of Lisbon
+    - M.Sc. Hydro-Science and Engineering, Technische Universität Dresden
+
+- degree: B.Sc. Agricultural and Environmental Engineering
+  institution: Olabisi Onabanjo University
+  location: Nigeria
+  start: "2006"
+  end: "2011"

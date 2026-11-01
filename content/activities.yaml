@@ -1,0 +1,57 @@
+# ---------------------------------------------------------------------------
+# TEACHING, SERVICE, SKILLS & LANGUAGES
+# ---------------------------------------------------------------------------
+
+teaching:
+  - year: "2021"
+    title: Guest lecture
+    where: IHE Delft Institute for Water Education
+  - year: "2018–2021"
+    title: Co-supervision of Bachelor's and Master's theses
+    where: University of Freiburg
+
+service:
+  - year: "2022"
+    title: Co-convener, large-sample hydrology session
+    where: EGU General Assembly, Vienna
+  - year: "2019"
+    title: Organising committee member
+    where: 46th IAH Congress, Málaga
+  # TODO add peer review (journals you review for), memberships (IAH, EGU, AGU…)
+
+# Optional blocks: uncomment and fill in; each appears on the site only when it has entries.
+# memberships:
+#   - name: International Association of Hydrogeologists (IAH)
+#     since: "2017"
+#   - name: European Geosciences Union (EGU)
+# awards:
+#   - year: "2015"
+#     title: Erasmus Mundus scholarship
+#     where: European Commission
+# peer_review:
+#   journals: [Hydrology and Earth System Sciences, Journal of Hydrology]
+
+skills:
+  Hydrology:
+    - Karst & groundwater hydrology
+    - Recession & hydrograph analysis
+    - Hydrological / groundwater modelling
+    - Climate & land-use impact assessment
+  Data science:
+    - Python (scientific stack)
+    - Machine learning
+    - Large-sample data management
+    - GIS & spatial analysis          # TODO verify
+  Web & communication:
+    - Django
+    - WordPress
+    - HTML / CSS / JavaScript
+    - Science communication
+
+languages:
+  - name: English
+    level: Fluent             # TODO
+  # - name: German
+  #   level: TODO
+  # - name: Yoruba
+  #   level: TODO

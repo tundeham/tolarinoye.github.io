@@ -1,0 +1,94 @@
+# ---------------------------------------------------------------------------
+# PROFILE — who you are. This drives the hero section, SEO tags and contact.
+# Lines marked "TODO" are placeholders / unverified — please check them.
+# ---------------------------------------------------------------------------
+
+name: Tunde Olarinoye
+honorific: Dr.
+postnominal: Ph.D.
+surname: Olarinoye            # used to highlight your name in author lists
+
+headline: Hydrologist · Water-Resources Scientist & Advisor
+# DRAFT positioning text: please review and adjust to your own voice.
+tagline: >-
+  Ph.D. hydrologist with international experience in groundwater science,
+  hydrological data systems and climate-resilient water-resources management.
+  I turn evidence into practical solutions for governments, international
+  organisations and development partners.
+
+current_position:
+  title: Scientific Officer
+  organisation: International Centre for Water Resources and Global Change (ICWRGC)
+  organisation_note: UNESCO Category 2 Centre, hosted by the Federal Institute of Hydrology (BfG)
+  url: https://waterandchange.org/en/
+
+location: Koblenz, Germany
+
+# Portrait: just save your photo as static/img/profile.jpg (or .png / .webp) and
+# rebuild. It is picked up automatically; until then a placeholder is shown.
+# To use a different file name, set it here, e.g.  photo: img/me.jpg
+photo:
+
+about:
+  - >-
+    I am a hydrologist with a Ph.D. from the University of Freiburg, where my
+    research focused on understanding the hydrodynamic behaviour of karst
+    aquifers, which supply drinking water to a large part of the world's
+    population, through comparative, large-sample hydrology.
+  - >-
+    I led the development of the World Karst Spring Hydrograph database
+    (WoKaS), the first global open dataset of karst spring discharge. I also
+    developed automated methods for recession analysis and classification of
+    karst springs. At the ICWRGC (UNESCO) I work at the interface of science
+    and data services, including data acquisition, soil-moisture data products
+    and web development for the International Soil Moisture Network (ISMN).
+  - >-
+    My interests span large-data analysis and management, hydrological
+    modelling, groundwater and global-change impact assessment, and machine
+    learning in hydrology.
+
+# Regions where you have studied, worked or run projects (shown in the About section)
+regions: [Nigeria, Germany, the Netherlands, Portugal, Tanzania, Mozambique]
+
+research_interests:
+  - Karst & groundwater hydrology
+  - Large-sample & comparative hydrology
+  - Hydrological modelling
+  - Climate & land-use change impacts
+  - Soil moisture observation networks
+  - Machine learning for hydrology
+  - Open data & research data management
+
+# Headline numbers shown in the "Impact" section. Publication and talk counts
+# are computed automatically. Add/remove entries freely.
+impact:
+  - value: "400+"
+    label: karst springs
+    detail: compiled into WoKaS, the first global open karst-spring discharge database (Scientific Data, 2020)
+  - value: "3"
+    label: European universities
+    detail: Erasmus Mundus joint M.Sc. across IHE Delft, IST Lisbon and TU Dresden
+  - value: "Global"
+    label: soil moisture data
+    detail: data acquisition, products and web services for the International Soil Moisture Network (ISMN)
+
+# Contact & profile links. Leave a value empty to hide it.
+links:
+  email: olarinoyetunde@gmail.com   # shown obfuscated to deter spam bots
+  linkedin: https://www.linkedin.com/in/tunde-olarinoye-ph-d-2a739286/
+  orcid: ""                     # TODO e.g. https://orcid.org/0000-0000-0000-0000
+  scholar: ""                   # TODO Google Scholar profile URL
+  researchgate: ""              # TODO
+  github: ""                    # TODO
+
+# Site-wide settings
+site:
+  url: https://tundeham.github.io   # TODO change to your GitHub Pages URL / custom domain
+  language: en
+  description: >-
+    Dr. Tunde Olarinoye: hydrologist, water-resources scientist and advisor.
+    Groundwater and karst hydrology, hydrological data science and
+    climate-resilient water management; open to senior roles, consultancy
+    and collaboration.
+  keywords: [hydrology, groundwater, karst, hydrogeology, water resources management, soil moisture, large-sample hydrology, climate change adaptation, water consultant, Nigeria]
+  show_legal_page: true          # German "Impressum"/privacy page (recommended in DE)
