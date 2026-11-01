@@ -27,7 +27,7 @@ location: Koblenz, Germany
 # Portrait: just save your photo as static/img/profile.jpg (or .png / .webp) and
 # rebuild. It is picked up automatically; until then a placeholder is shown.
 # To use a different file name, set it here, e.g.  photo: img/me.jpg
-photo:
+photo: img/profile_photo.PNG
 
 about:
   - >-
