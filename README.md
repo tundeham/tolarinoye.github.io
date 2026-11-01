@@ -1,4 +1,4 @@
-# Personal academic website: Dr. Tunde Olarinoye
+# Personal academic website: Tunde Olarinoye
 
 A minimal, scientific-style personal website and online CV, generated from plain
 YAML files and hosted **for free on GitHub Pages**.
