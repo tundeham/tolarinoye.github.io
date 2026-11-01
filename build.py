@@ -71,7 +71,7 @@ def find_photo(configured: str | None) -> tuple[str, bool]:
     for ext in ("jpg", "jpeg", "png", "webp"):
         if (STATIC / "img" / f"profile.{ext}").exists():
             return f"img/profile.{ext}", False
-    return "img/profile-placeholder.svg", True
+    return "img/profile_photo.PNG", True
 
 
 def warn_todos() -> None:
