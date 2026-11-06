@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Contact | {{ profile.name }}, Water Resources Scientist{% endblock %}
+{% block description %}Professional enquiries to Dr. Tunde Olarinoye: e-mail, LinkedIn, ORCID and ResearchGate. Based in Germany, available internationally.{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+{{ m.page_header("Contact", "Professional enquiries", "For research collaboration, consulting, advisory roles or speaking invitations, e-mail is the quickest way to reach me.") }}
+
+<section class="section">
+  <div class="container form-grid">
+    <div>
+      <h2 class="h3">Get in touch</h2>
+      {{ m.profile_links(p.links) }}
+      <p class="location-line">{{ m.icon('pin') }} {{ p.location_note }}</p>
+    </div>
+    <div id="enquiry">
+      <h2 class="h3">Professional enquiry form</h2>
+      {{ m.enquiry_form("contact-form", p.links.email, collaborate.interests, kind='enquiry') }}
+    </div>
+  </div>
+</section>
+{% endblock %}

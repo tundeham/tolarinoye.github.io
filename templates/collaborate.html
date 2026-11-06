@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Collaborate | {{ profile.name }}, Hydrologist and Water Resources Advisor{% endblock %}
+{% block description %}Research collaboration, academic mentoring, institutional partnerships and technical consulting in hydrology, water resources and environmental data.{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+{{ m.page_header("Collaborate", "Let's connect and collaborate", collaborate.intro) }}
+
+<section class="section">
+  <div class="container">
+    <div class="cards cards-2">
+      {% for e in collaborate.entry_points %}
+      <article class="card card-entry" id="{{ e.id }}">
+        <p class="card-meta">For</p>
+        <h3 class="card-title">{{ e.title }}</h3>
+        <p class="card-who">{{ e.who }}</p>
+        <p class="card-text">{{ e.text }}</p>
+        <a class="link-arrow" href="#enquiry" data-interest="{{ e.value }}">Start an enquiry</a>
+      </article>
+      {% endfor %}
+    </div>
+    <h3 class="subhead">I am also open to</h3>
+    <ul class="chips">{% for x in collaborate.also_open_to %}<li>{{ x }}</li>{% endfor %}</ul>
+  </div>
+</section>
+
+<section class="section section-mist" id="enquiry">
+  <div class="container form-grid">
+    <div>
+      {{ m.head("Collaboration enquiry", "Tell me about your idea") }}
+      <p>Share the organisation, the area of interest and what you have in mind. I read every enquiry personally and reply as soon as I can.</p>
+      <p class="muted small">Mentoring and supervision are offered as research mentoring, academic collaboration and methodological guidance; I do not hold a formal university appointment.</p>
+    </div>
+    {{ m.enquiry_form("collab-form", p.links.email, collaborate.interests, kind='collaboration') }}
+  </div>
+</section>
+{% endblock %}

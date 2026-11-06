@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}One-page Professional Profile | {{ profile.name }}{% endblock %}
+{% block description %}One-page professional profile of Dr. Tunde Olarinoye for clients, conference organisers and institutional partners.{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+<div class="container doc sheet">
+  <div class="doc-toolbar no-print">
+    <a href="{{ root }}about/#downloads" class="muted">← Back to website</a>
+    <span class="doc-switch"><a href="{{ root }}cv/">Academic CV</a> · <a href="{{ root }}resume/">International résumé</a></span>
+    <button class="btn btn-primary" type="button" onclick="window.print()">Save as PDF</button>
+  </div>
+
+  <header class="sheet-head">
+    <img src="{{ root }}{{ p.photo }}" alt="Portrait of {{ p.name }}" width="140" height="140">
+    <div>
+      <p class="sheet-brand">TO.</p>
+      <h1>{{ p.name | upper }}</h1>
+      <p class="doc-headline">{{ p.title }}</p>
+      <p class="doc-sub">{{ p.descriptor }}</p>
+    </div>
+  </header>
+
+  <p class="sheet-statement">{{ p.tagline }}.</p>
+  <p>{{ p.bio_short }}</p>
+
+  <div class="sheet-cols">
+    <section>
+      <h2>Expertise</h2>
+      <ul>{% for a in expertise.areas %}<li>{{ a.title }}</li>{% endfor %}</ul>
+      <h2>Services</h2>
+      <ul>{% for s in consulting.services %}<li>{{ s.title }}</li>{% endfor %}</ul>
+    </section>
+    <section>
+      <h2>Credentials</h2>
+      <ul>
+        <li>PhD Hydrology, University of Freiburg</li>
+        <li>Joint M.Sc. Groundwater and Global Change (Erasmus Mundus: IHE Delft, IST Lisbon, TU Dresden)</li>
+        <li>Scientific Officer, UNESCO ICWRGC, since 2021</li>
+        <li>{{ stats.articles }} peer-reviewed articles, including <em>Scientific Data</em> and <em>HESS</em></li>
+        <li>Lead of WoKaS, global karst spring dataset (400+ springs)</li>
+      </ul>
+      <h2>Speaking topics</h2>
+      <ul>{% for x in insights.topics.keynotes[:3] %}<li>{{ x }}</li>{% endfor %}</ul>
+    </section>
+  </div>
+
+  <footer class="sheet-foot">
+    <p><strong>Contact</strong> · {{ p.links.email | obfuscate }} · {{ site_url | replace('https://', '') }} · ORCID {{ p.links.orcid.rsplit('/', 1)[-1] }} · {{ p.location_note }}</p>
+  </footer>
+</div>
+{% endblock %}

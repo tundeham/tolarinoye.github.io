@@ -1,36 +1,102 @@
 # ---------------------------------------------------------------------------
-# WORK WITH ME: consultancy, advisory roles and collaboration.
-# DRAFT: review every line, and remove anything you do not want to offer.
+# ADVISORY & CONSULTING: areas in which expertise is offered and engagement is
+# welcome. Deliberately worded as capability and availability, NOT as a claim
+# that every type of appointment has already been held (DESIGN.md, section E).
 # ---------------------------------------------------------------------------
 
-intro: >-
-  I support governments, international organisations, development partners and
-  research institutions with science-based, practical water-resources work.
-  I am open to senior advisory and leadership roles, consultancy assignments
-  and research collaborations.
+headline: Expertise that connects science with action
+intro:
+  - >-
+    Scientific knowledge creates the greatest impact when it informs decisions,
+    strengthens institutions and supports practical solutions.
+  - >-
+    I work with research institutions, universities, government agencies,
+    international organisations and development partners on water resources,
+    hydrology, environmental data and sustainable water management.
+  - >-
+    Whether you are developing a research initiative, designing a water-related
+    programme, seeking technical expertise or exploring an institutional
+    partnership, I welcome the opportunity to connect.
+
+independence_note: >-
+  Advisory and consulting engagements are undertaken in a personal capacity and
+  are independent of my position at ICWRGC. They are agreed in line with my
+  employer's rules on secondary activities, and no institutional materials are
+  used without permission.
 
 services:
-  - title: Groundwater & karst assessment
-    text: Resource assessment, aquifer characterisation and sustainable-yield studies, including data-scarce settings.
-  - title: Hydrological data & modelling
-    text: Data analysis, hydrological and machine-learning models, and uncertainty-aware assessments.
-  - title: Water data systems
-    text: Design of data collection, quality control, management and open-data platforms for water institutions.
-  - title: Climate & urbanisation impacts
-    text: Scenario analysis for water security, adaptation planning and infrastructure decisions.
-  - title: Policy briefs & scientific advice
-    text: Reviews, technical reports and plain-language briefs that turn evidence into options for decision makers.
-  - title: Training & capacity development
-    text: Workshops, lectures and mentoring for water professionals, students and technical staff.
+  - id: hydrology
+    title: Hydrology and Water Resources Advisory
+    text: Independent scientific input on how much water is available, how it behaves and how it may change.
+    points:
+      - Hydrological assessments and modelling
+      - Water resources assessment and planning
+      - Soil moisture and drought monitoring
+      - Hydrological data interpretation
+      - Climate resilience and water security
+  - id: development
+    title: International Development Consulting
+    text: Technical expertise for programmes that need credible water science.
+    points:
+      - Technical inputs for development programmes
+      - Water sector project design and assessment
+      - Technical reports and programme reviews
+      - Monitoring, evaluation and learning
+      - Institutional capacity development
+  - id: data
+    title: Water Data and Digital Solutions
+    text: Data infrastructure and workflows that make water information reliable and reusable.
+    points:
+      - Hydrological data infrastructure
+      - Environmental data integration
+      - Geospatial and Earth observation applications
+      - Data quality assurance and standardisation
+      - Scientific information systems
+  - id: mentoring
+    title: Research Mentoring and Academic Collaboration
+    text: Methodological support for students and early-career researchers, and joint research with academic partners.
+    points:
+      - PhD and MSc research mentoring
+      - Research proposal development
+      - Scientific writing and publication support
+      - Collaborative research development
+      - Methodological guidance in hydrology
+  - id: speaking
+    title: Keynotes, Workshops and Professional Speaking
+    text: Clear, engaging communication of water science to technical and non-technical audiences.
+    points:
+      - Conference keynote presentations
+      - Technical workshops
+      - Training in hydrological data and modelling
+      - Scientific communication
+      - Institutional seminars and expert panels
+  - id: strategic
+    title: Strategic Advisory
+    text: Evidence-based input to policy, governance and institutional strategy in water and environmental management.
+    points:
+      - Water policy and governance
+      - Environmental management strategies
+      - Water security and climate resilience
+      - Institutional strategy and partnerships
+      - Technical advisory boards and expert committees
 
-engagements:
-  - Senior advisory & leadership roles
-  - Consultancy assignments
-  - Research collaboration
-  - Advisory boards & expert panels
-  - Keynotes & invited talks
-  - Training & workshops
-  - Peer review
+how_it_works:
+  - title: Conversation
+    text: A short call to understand your question, context and constraints.
+  - title: Scope
+    text: A clear proposal with outputs, timeline and the way uncertainty will be handled.
+  - title: Delivery
+    text: Transparent methods, documented data and reports written for their readers.
+  - title: Follow-up
+    text: Hand-over, presentation of results and options for continued support.
+
+# Pathways I explicitly welcome (DESIGN.md, section 7)
+pathways:
+  - Scientific and technical advisory committees
+  - Water resources and environmental expert panels
+  - International research and development working groups
+  - Institutional technical advisory boards
+  - Water security and climate resilience initiatives
 
 audiences:
   - International & UN organisations

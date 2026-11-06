@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}International Professional Résumé | {{ profile.name }}{% endblock %}
+{% block description %}Concise international résumé of Dr. Tunde Olarinoye, water resources scientist: profile, competencies, experience, achievements, education and selected publications.{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+<div class="container doc resume">
+  <div class="doc-toolbar no-print">
+    <a href="{{ root }}about/#downloads" class="muted">← Back to website</a>
+    <span class="doc-switch"><a href="{{ root }}cv/">Academic CV</a> · <a href="{{ root }}profile-sheet/">One-page profile</a></span>
+    <button class="btn btn-primary" type="button" onclick="window.print()">Save as PDF</button>
+  </div>
+
+  <header class="doc-header">
+    <div>
+      <h1>{{ p.honorific }} {{ p.name }}</h1>
+      <p class="doc-headline">{{ p.headline }}</p>
+      <p class="doc-sub">International Professional Résumé</p>
+    </div>
+    <ul class="doc-contact">
+      <li>{{ p.location_note }}</li>
+      {% if p.links.email %}<li><a href="mailto:{{ p.links.email | obfuscate }}">{{ p.links.email | obfuscate }}</a></li>{% endif %}
+      <li><a href="{{ site_url }}/">{{ site_url | replace('https://', '') }}</a></li>
+      {% if p.links.linkedin %}<li><a href="{{ p.links.linkedin }}">LinkedIn</a></li>{% endif %}
+      {% if p.links.orcid %}<li><a href="{{ p.links.orcid }}">ORCID {{ p.links.orcid.rsplit('/', 1)[-1] }}</a></li>{% endif %}
+    </ul>
+  </header>
+
+  <section class="doc-section">
+    <h2>Professional profile</h2>
+    <p>{{ p.statement }}</p>
+    <p>{{ p.intro[2] }}</p>
+  </section>
+
+  <section class="doc-section">
+    <h2>Key competencies</h2>
+    <dl class="doc-skills">
+      {% for a in expertise.areas %}<dt>{{ a.title }}</dt><dd>{{ a.lead }}</dd>{% endfor %}
+    </dl>
+  </section>
+
+  <section class="doc-section">
+    <h2>Professional experience</h2>
+    {% for job in experience[:3] %}
+    <div class="doc-entry">
+      <p class="doc-date">{{ job.start | daterange(job.end) }}</p>
+      <div>
+        <p class="doc-title">{{ job.role }}</p>
+        <p class="doc-org">{{ job.organisation }}, {{ job.location }}</p>
+        <ul>{% for h in (job.resume or job.highlights) %}<li>{{ h }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="doc-entry">
+      <p class="doc-date">2013–2016</p>
+      <div>
+        <p class="doc-title">Earlier positions</p>
+        <ul>
+          {% for job in experience[3:] %}<li><strong>{{ job.role }}</strong>, {{ job.organisation }}, {{ job.location }} ({{ job.start | daterange(job.end) }}).</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h2>Selected achievements</h2>
+    <ul>
+      <li>Led WoKaS, the first global open database of karst spring discharge (400+ springs), published in <em>Scientific Data</em> (2020).</li>
+      <li>Initiated and led an EGU data-services session (2023) bringing together ISMN, GRDC, GWDC, IGRAC and GTN-H.</li>
+      <li>Proposed and organise the annual ISMN splinter meeting at EGU and a virtual data-provider workshop series.</li>
+      <li>Led a joint ISMN / IAHS HELPING workshop at the IAHS Scientific Assembly, Roorkee, India (2025).</li>
+      <li>Awarded a DAAD research-exchange scholarship (2021) and a full EU Erasmus Mundus scholarship (2015–2017).</li>
+    </ul>
+  </section>
+
+  <section class="doc-section">
+    <h2>International cooperation</h2>
+    <p>{{ p.engagement | join(' · ') }}. Fieldwork and professional experience in {{ p.regions | join(', ') }}.</p>
+  </section>
+
+  <section class="doc-section">
+    <h2>Education</h2>
+    {% for ed in education %}
+    <div class="doc-entry">
+      <p class="doc-date">{{ ed.start | daterange(ed.end) }}</p>
+      <div>
+        <p class="doc-title">{{ ed.degree }}</p>
+        <p class="doc-org">{{ ed.institution }}, {{ ed.location }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="doc-section">
+    <h2>Selected publications</h2>
+    <ol class="doc-pubs">
+      {% for pub in featured_pubs %}<li>{{ m.citation(pub, p.surname) }}{% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">doi:{{ pub.doi }}</a>{% endif %}</li>{% endfor %}
+    </ol>
+    <p class="doc-note">Full list: ORCID {{ p.links.orcid.rsplit('/', 1)[-1] }} · Languages: {% for l in activities.languages %}{{ l.name }} ({{ l.level | lower }}){% if not loop.last %}, {% endif %}{% endfor %}.</p>
+  </section>
+
+  <p class="doc-footer muted">Referees available on request. Last updated {{ build_date.strftime('%B %Y') }} · Online: {{ site_url }}/resume/</p>
+</div>
+{% endblock %}

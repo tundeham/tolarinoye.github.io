@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}About | {{ profile.honorific }} {{ profile.name }}, {{ profile.title }}{% endblock %}
+{% block description %}Biography, qualifications, professional experience and international collaborations of Dr. Tunde Olarinoye, hydrologist and water resources scientist at UNESCO ICWRGC.{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+{{ m.page_header("About", "Science, data and international cooperation", p.statement) }}
+
+{# ---------------------------------------------------------------- biography #}
+<section class="section" id="biography">
+  <div class="container about-grid">
+    <aside class="about-aside">
+      <img class="about-photo" src="{{ root }}{{ p.photo }}" width="900" height="900" alt="Portrait of {{ p.name }}">
+      <p class="about-name">{{ p.honorific }} {{ p.name }}</p>
+      <p class="muted small">{{ p.current_position.title }}<br>{{ p.current_position.organisation }}</p>
+      <p class="muted small">{{ p.location_note }}</p>
+      <p><a class="btn btn-primary btn-block" href="#downloads">CV &amp; downloads</a></p>
+    </aside>
+    <div>
+      {{ m.head("Professional biography", "Biography") }}
+      <div class="tabs" data-tabs>
+        <div class="tablist" role="tablist" aria-label="Biography length">
+          <button role="tab" id="tab-short" aria-controls="panel-short" aria-selected="true">Short <span>{{ p.bio_short.split() | length }} words</span></button>
+          <button role="tab" id="tab-long" aria-controls="panel-long" aria-selected="false" tabindex="-1">Extended <span>{{ p.bio_long | join(' ') | wordcount }} words</span></button>
+        </div>
+        <div class="tabpanel prose" role="tabpanel" id="panel-short" aria-labelledby="tab-short">
+          <p>{{ p.bio_short }}</p>
+          <p class="panel-note muted small">For conference organisers, introductions and institutional websites.
+            <button class="link-btn" type="button" data-copy="#panel-short p:first-child">Copy text</button></p>
+        </div>
+        <div class="tabpanel prose" role="tabpanel" id="panel-long" aria-labelledby="tab-long" hidden>
+          {% for para in p.bio_long %}<p>{{ para }}</p>{% endfor %}
+          <p class="panel-note muted small">For potential employers, partners and consulting clients.
+            <button class="link-btn" type="button" data-copy="#panel-long">Copy text</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- qualifications #}
+<section class="section section-mist" id="qualifications">
+  <div class="container">
+    {{ m.head("Academic qualifications", "Education") }}
+    <ol class="timeline">
+      {% for ed in education %}
+      <li class="tl-item">
+        <p class="tl-date">{{ ed.start | daterange(ed.end) }}</p>
+        <div class="tl-body">
+          <h3 class="tl-title">{{ ed.degree }}</h3>
+          <p class="tl-org">{{ ed.institution }}<span class="muted"> · {{ ed.location }}</span></p>
+          {% if ed.note %}<p class="tl-note"><span class="label">Award</span> {{ ed.note }}</p>{% endif %}
+          {% if ed.thesis %}<p class="tl-note"><span class="label">Thesis</span> <em>{{ ed.thesis }}</em></p>{% endif %}
+          {% if ed.details %}<ul class="tl-points">{% for d in ed.details %}<li>{{ d }}</li>{% endfor %}</ul>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+    <h3 class="subhead">Awards &amp; scholarships</h3>
+    <ul class="plain-list">
+      {% for x in activities.awards %}<li><span class="mono muted">{{ x.year }}</span> {{ x.title }}, <span class="muted">{{ x.where }}</span></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- experience #}
+<section class="section" id="experience">
+  <div class="container">
+    {{ m.head("Professional experience", "Career") }}
+    <ol class="timeline">
+      {% for job in experience %}
+      <li class="tl-item">
+        <p class="tl-date">{{ job.start | daterange(job.end) }}</p>
+        <div class="tl-body">
+          <h3 class="tl-title">{{ job.role }}</h3>
+          <p class="tl-org">
+            {% if job.url %}<a href="{{ job.url }}" target="_blank" rel="noopener">{{ job.organisation }}</a>{% else %}{{ job.organisation }}{% endif %}
+            {% if job.location %}<span class="muted"> · {{ job.location }}</span>{% endif %}
+          </p>
+          {% if job.note %}<p class="tl-note muted small">{{ job.note }}</p>{% endif %}
+          {% if job.highlights %}
+          <ul class="tl-points">{% for h in job.highlights %}<li>{{ h }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- technical expertise #}
+<section class="section section-mist" id="technical">
+  <div class="container">
+    {{ m.head("Technical expertise", "Skills and competences") }}
+    <div class="skills">
+      {% for group, items in activities.skills.items() %}
+      <div class="skill-group">
+        <p class="skill-head">{{ group }}</p>
+        <ul class="chips chips-sm">{% for s in items %}<li>{{ s }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="regions"><span class="label">Languages</span>
+      {% for l in activities.languages %}{{ l.name }} ({{ l.level | lower }}){% if not loop.last %} · {% endif %}{% endfor %}</p>
+    <h3 class="subhead">Relevant field experience</h3>
+    <ul class="plain-list">
+      {% for f in activities.field_experience %}<li><span class="mono muted">{{ f.year }}</span> {{ f.text }}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- international #}
+<section class="section" id="international">
+  <div class="container">
+    {{ m.head("International experience and collaborations", "Networks and working groups",
+        "Active in international working groups and data communities, and engaged with UNESCO, WMO and GCOS structures through ISMN and ICWRGC.") }}
+    <div class="cards cards-2">
+      {% for n in activities.networks %}
+      <div class="card">
+        <h3 class="card-title">{{ n.name }}</h3>
+        <p class="card-text">{{ n.detail }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="regions"><span class="label">Experience in</span> {{ p.regions | join(' · ') }}</p>
+    <h3 class="subhead">Convened and organised</h3>
+    <ul class="plain-list">
+      {% for c in presentations.convened %}
+      <li><span class="mono muted">{{ c.year }}</span> <strong>{{ c.title }}</strong>, <span class="muted">{{ c.event }} · {{ c.role }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- affiliations #}
+<section class="section section-mist" id="affiliations">
+  <div class="container">
+    {{ m.head("Professional affiliations and memberships", "Affiliations & service") }}
+    <div class="two-col">
+      <div>
+        <h3 class="subhead">Memberships</h3>
+        <ul class="plain-list">{% for x in activities.memberships %}<li>{{ x.name }}</li>{% endfor %}</ul>
+        <h3 class="subhead">Peer review</h3>
+        <p>Reviewer for {{ activities.peer_review.journals | join(', ') }}.</p>
+      </div>
+      <div>
+        <h3 class="subhead">Teaching &amp; mentoring</h3>
+        <ul class="plain-list">
+          {% for t in activities.teaching %}<li><span class="mono muted">{{ t.year }}</span> {{ t.title }}, <span class="muted">{{ t.where }}</span></li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+    <h3 class="subhead">Short courses and certificates</h3>
+    <ul class="plain-list plain-list-2">
+      {% for c in activities.courses %}<li><span class="mono muted">{{ c.year }}</span> {{ c.title }}, <span class="muted">{{ c.where }}</span></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- downloads #}
+<section class="section" id="downloads">
+  <div class="container">
+    {{ m.head("CV and résumé downloads", "Download my profile",
+        "Choose the version that suits your purpose. Download each as a PDF, or open the print-ready web version.") }}
+    <div class="cards cards-3">
+      <a class="card card-link" href="{{ root }}cv/">
+        <span class="card-icon">{{ m.icon('download') }}</span>
+        <h3 class="card-title">Academic &amp; scientific CV</h3>
+        <p class="card-text">Qualifications, research experience, publications, projects, technical skills, conference contributions and affiliations.</p>
+        <span class="card-more" aria-hidden="true">→</span>
+      </a>
+      <a class="card card-link" href="{{ root }}resume/">
+        <span class="card-icon">{{ m.icon('download') }}</span>
+        <h3 class="card-title">International professional résumé</h3>
+        <p class="card-text">A concise 2–3 page version: profile, key competencies, experience, achievements, education and selected publications.</p>
+        <span class="card-more" aria-hidden="true">→</span>
+      </a>
+      <a class="card card-link" href="{{ root }}profile-sheet/">
+        <span class="card-icon">{{ m.icon('download') }}</span>
+        <h3 class="card-title">One-page professional profile</h3>
+        <p class="card-text">For clients, conference organisers and institutional partners.</p>
+        <span class="card-more" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <p class="download-row">
+      <a class="btn btn-primary" href="{{ root }}downloads/Olarinoye-CV.pdf" download>CV (PDF)</a>
+      <a class="btn btn-primary" href="{{ root }}downloads/Olarinoye-Resume.pdf" download>Résumé (PDF)</a>
+      <a class="btn btn-primary" href="{{ root }}downloads/Olarinoye-Profile.pdf" download>Profile (PDF)</a>
+    </p>
+  </div>
+</section>
+
+{{ m.cta_band("Interested in working together?", "I welcome research collaboration, advisory work and speaking invitations.", ("Collaborate", root ~ "collaborate/"), ("Contact", root ~ "contact/")) }}
+{% endblock %}

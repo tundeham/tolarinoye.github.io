@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Advisory and Consulting | {{ profile.name }}, Hydrology &amp; Water Resources{% endblock %}
+{% block description %}Hydrology and water resources advisory, international development consulting, water data solutions, research mentoring, speaking and strategic advisory by Dr. Tunde Olarinoye.{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+{{ m.page_header("Advisory & consulting", consulting.headline, consulting.intro[0]) }}
+
+<section class="section">
+  <div class="container split">
+    <div class="prose">
+      {% for para in consulting.intro[1:] %}<p>{{ para }}</p>{% endfor %}
+      <p><a class="btn btn-primary" href="{{ root }}contact/">Discuss an assignment</a></p>
+    </div>
+    <div>
+      <h3 class="mini-head">Who I work with</h3>
+      <ul class="chips">{% for x in consulting.audiences %}<li>{{ x }}</li>{% endfor %}</ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-mist">
+  <div class="container">
+    {{ m.head("Areas of engagement", "Six service areas", "Areas in which I offer expertise and am available for engagement.") }}
+    <div class="services">
+      {% for s in consulting.services %}
+      <article class="service" id="{{ s.id }}">
+        <p class="service-num">{{ '%02d' | format(loop.index) }}</p>
+        <h3>{{ s.title }}</h3>
+        <p class="service-text">{{ s.text }}</p>
+        <ul class="tl-points">{% for i in s.points %}<li>{{ i }}</li>{% endfor %}</ul>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ m.head("How it works", "A clear and transparent process") }}
+    <ol class="steps">
+      {% for s in consulting.how_it_works %}
+      <li><span class="step-n">{{ loop.index }}</span><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section section-mist" id="boards">
+  <div class="container split">
+    <div>
+      {{ m.head("Strategic advisory pathways", "Open to serve on", "I explicitly welcome invitations to contribute to strategic and scientific bodies.") }}
+      <ul class="check-list">{% for x in consulting.pathways %}<li>{{ x }}</li>{% endfor %}</ul>
+    </div>
+    <aside class="note-box">
+      <h3 class="mini-head">Independence and transparency</h3>
+      <p>{{ consulting.independence_note }}</p>
+    </aside>
+  </div>
+</section>
+
+{{ m.cta_band("Let's work together", "Share your question and I will respond with how I can help.", ("Contact me", root ~ "contact/"), ("Collaboration options", root ~ "collaborate/")) }}
+{% endblock %}

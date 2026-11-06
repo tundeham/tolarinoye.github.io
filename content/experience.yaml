@@ -1,19 +1,33 @@
 # ---------------------------------------------------------------------------
 # PROFESSIONAL EXPERIENCE: newest first.
 #   end: leave empty for "Present"
-#   highlights: bullet points (keep them outcome-oriented)
+#   highlights: outcome-oriented bullets (shown on About and the CV)
+#   resume: short version of highlights used by the 2-3 page resume (optional)
+# Sources: Curriculum Vitae (Nov 2026), ICWRGC bio, 2026 cover letter.
 # ---------------------------------------------------------------------------
 
-- role: Scientific Officer
+- role: Research Scientist
   organisation: International Centre for Water Resources and Global Change (ICWRGC), UNESCO
+  note: UNESCO Category 2 Centre hosted by the Federal Institute of Hydrology (BfG)
   url: https://waterandchange.org/en/
   location: Koblenz, Germany
-  start: "2021"              # TODO verify start year
+  start: "Dec 2021"
   end: ""
+  summary: Science, data and international outreach for the International Soil Moisture Network (ISMN) and the Centre.
   highlights:
-    - Data acquisition and development of soil-moisture data products for the International Soil Moisture Network (ISMN).
-    - Public relations and front-end web development for ISMN data services.
-    - Co-convened the large-sample hydrology session at the EGU General Assembly 2022 (Vienna).
+    - Acquire in-situ soil moisture data from an international portfolio of data providers and develop ISMN data products, reporting and quality-controlled services.
+    - Lead strategic outreach, public relations and communication for ISMN and the Centre, including contributions to the Centre's PR strategy and front-end web development.
+    - Initiated and lead-convened a data-services session at the EGU General Assembly (2023) with ISMN, GRDC, GWDC, IGRAC and GTN-H as co-conveners.
+    - Proposed and have since organised the annual ISMN splinter meeting at EGU (since 2023), bringing soil moisture data providers, users and product developers into one community.
+    - Run the virtual ISMN data-provider workshop series (since February 2022).
+    - Led the joint ISMN / IAHS HELPING side event and workshop at the IAHS Scientific Assembly, Roorkee, India (2025).
+    - Co-convened the Large Sample Hydrology session at EGU, the largest hydrological sciences session at the assembly.
+    - Contributed to a catalogue documenting six decades of German contributions to hydrology and the UNESCO International Hydrological Programme, produced for the programme's 50th anniversary.
+    - Engage with WMO, UNESCO and GCOS (TOPC) structures and events on behalf of ISMN and the Centre.
+  resume:
+    - Acquisition, management and product development for the global ISMN data service and its international data-provider portfolio.
+    - Strategic outreach, communication and stakeholder engagement for ISMN and the Centre.
+    - "Initiated and led new international activities: an EGU data-services session (2023), an annual ISMN splinter meeting, a virtual data-provider workshop series and a joint ISMN / IAHS workshop in India (2025)."
 
 - role: Scientific Employee / Doctoral Researcher
   organisation: Chair of Hydrological Modelling and Water Resources, University of Freiburg
@@ -21,27 +35,50 @@
   location: Freiburg, Germany
   start: "2018"
   end: "2021"
+  summary: Comparative, large-sample hydrology of karst aquifers.
   highlights:
-    - Led the development of WoKaS, the first global open karst-spring hydrograph database (400+ springs).
-    - Developed automated recession-extraction and classification methods for karst springs.
-    - Co-supervised Bachelor's and Master's theses.
+    - Led the development of WoKaS, the first global open karst-spring hydrograph database (400+ springs), published in Scientific Data.
+    - Developed automated recession-extraction and classification methods for karst springs (Hydrology and Earth System Sciences, 2022).
+    - Contributed to the GloW project on global water stress in karst regions.
+    - Secured a DAAD research-exchange grant with a self-written proposal (University of Victoria, Canada, 2021).
+    - Co-supervised Bachelor's, Master's and intern projects; co-organised a PhD workshop on hydrological modelling across landscapes (2019).
+  resume:
+    - Led WoKaS, the first global open database of karst spring discharge (400+ springs).
+    - Developed automated methods for recession analysis and classification of spring hydrographs.
+    - Supervised Bachelor's and Master's projects; co-organised an international PhD workshop.
 
 - role: Graduate Researcher
-  organisation: IHE Delft Institute for Water Education (UNESCO-IHE)
+  organisation: IHE Delft Institute for Water Education (UNESCO-IHE), T-GroUP project
   url: https://www.un-ihe.org/
   location: Delft, the Netherlands
   start: "2017"
   end: "2018"
+  summary: Water balance and groundwater under urbanisation and climate change in Tanzania.
   highlights:
-    - Assessed the future impacts of urbanisation and climate change on groundwater in Arusha, Tanzania (published in Water International).
+    - Assessed the impacts of land-use and land-cover change and climate change on present and future water availability in Arusha, Tanzania (Water International, 2020).
+    - Ground-truthed land-use maps classified from Landsat 5 and Sentinel-2 imagery and mapped water utilities during fieldwork in Arusha.
 
 - role: Research Intern
   organisation: Deltares
   url: https://www.deltares.nl/en
   location: Utrecht, the Netherlands
-  start: "2016"
-  end: "2016"
+  start: "Aug 2016"
+  end: "Sep 2016"
   highlights:
-    - TODO describe the internship project in one or two lines.
+    - Assisted in developing a global hydrological database for groundwater resource modelling in delta areas.
 
-# TODO add any earlier positions (e.g. in Nigeria, 2011–2015).
+- role: Assistant Technical Supervisor
+  organisation: Slabmark Nigeria Limited
+  location: Nigeria
+  start: "2014"
+  end: "2015"
+  highlights:
+    - Supervised the management of water utilities and drainage systems.
+
+- role: Project Supervisor
+  organisation: Bukevic Hydrological Services
+  location: Nigeria
+  start: "2013"
+  end: "2014"
+  highlights:
+    - Managed regional groundwater projects and maintained hydrological and meteorological databases.

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Expertise | {{ profile.name }}, Water Resources Scientist{% endblock %}
+{% block description %}Technical and scientific capabilities in hydrology, soil moisture monitoring, Earth observation, environmental data management and water information systems.{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+{{ m.page_header("Expertise", "What I bring to a project or institution", "Five capability areas, each with the problems I can help solve and the outputs a client or research partner can expect.") }}
+
+<section class="section">
+  <div class="container">
+    <ul class="pillars">
+      {% for pl in p.pillars %}
+      <li><span class="pillar-num">{{ pl.num }}</span><h3>{{ pl.title }}</h3><p>{{ pl.text }}</p></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% for a in expertise.areas %}
+<section class="section{% if loop.index is even %} section-mist{% endif %}" id="{{ a.id }}">
+  <div class="container area">
+    <header class="area-head">
+      <p class="area-num">{{ a.num }}</p>
+      <h2>{{ a.title }}</h2>
+      <p class="lead-sm">{{ a.lead }}</p>
+    </header>
+    <div class="area-cols">
+      <div>
+        <h3 class="mini-head">Problems I can help solve</h3>
+        <ul class="tl-points">{% for x in a.problems %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+      <div>
+        <h3 class="mini-head">What you can expect</h3>
+        <ul class="tl-points">{% for x in a.outputs %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+    <p class="area-evidence"><span class="label">Track record</span> {{ a.evidence }}</p>
+  </div>
+</section>
+{% endfor %}
+
+{{ m.cta_band("Have a water or data challenge in mind?", "Tell me about the question, the context and the outcome you need.", ("Advisory & consulting", root ~ "advisory/"), ("Get in touch", root ~ "contact/")) }}
+{% endblock %}

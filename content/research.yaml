@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------------------
+# RESEARCH THEMES (Research page, homepage) and RESEARCH HIGHLIGHTS.
+# ---------------------------------------------------------------------------
+
+intro: >-
+  My research asks how water moves through landscapes, how we can observe it
+  reliably, and how that knowledge can be turned into data and evidence that
+  institutions can use. It combines process-based hydrology, large-sample
+  analysis and international data infrastructure.
+
+themes:
+  - area: Groundwater
+    focus: Climate and global-change impact assessment, karst and aquifer dynamics
+  - area: Hydrological modelling
+    focus: Water balance, hydrological processes and recession analysis
+  - area: Soil moisture
+    focus: In-situ networks, monitoring and validation
+  - area: Hydroclimatic data
+    focus: Climate and hydrological observations, large-sample data analysis
+  - area: Earth observation
+    focus: Satellite hydrology and ground-based validation
+  - area: Water information systems
+    focus: Data infrastructure, integration, quality control and accessibility
+  - area: Climate resilience
+    focus: Water security, drought and environmental change

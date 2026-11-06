@@ -6,21 +6,25 @@
   institution: University of Freiburg
   location: Freiburg, Germany
   start: "2018"
-  end: "2022"                 # TODO verify year of award
-  thesis: Unravelling the hydrodynamic behaviour of karst aquifer systems through comparative hydrology
+  end: "2022"
+  thesis: Unravelling the hydrodynamic behavior of karst aquifer systems through comparative hydrology
 
 - degree: Erasmus Mundus Joint M.Sc. in Groundwater and Global Change (GroundwatCh)
   institution: IHE Delft · Instituto Superior Técnico Lisbon · TU Dresden
   location: the Netherlands · Portugal · Germany
   start: "2015"
   end: "2017"
+  note: European Union full scholarship
+  thesis: Assessing impacts of urbanisation and climate change on present and future water availability in Arusha, Tanzania
   details:
     - M.Sc. Water Science and Engineering, IHE Delft Institute for Water Education
     - M.Sc. Environmental Engineering, Instituto Superior Técnico, University of Lisbon
     - M.Sc. Hydro-Science and Engineering, Technische Universität Dresden
 
-- degree: B.Sc. Agricultural and Environmental Engineering
+- degree: B.Sc. Agricultural and Environmental Engineering (First Class Honours)
   institution: Olabisi Onabanjo University
   location: Nigeria
   start: "2006"
   end: "2011"
+  note: Best graduating student, Department of Agricultural Engineering
+  thesis: Impact of wastewater on crop and soil biodiversity

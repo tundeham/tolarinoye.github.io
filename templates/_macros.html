@@ -7,29 +7,52 @@
   {% if pub.data %}<a class="tag-link" href="{{ pub.data }}" target="_blank" rel="noopener">Data</a>{% endif %}
   {% if pub.code %}<a class="tag-link" href="{{ pub.code }}" target="_blank" rel="noopener">Code</a>{% endif %}
   {% if pub.open_access %}<span class="tag oa" title="Open access">Open access</span>{% endif %}
+  {% if pub.status == 'under_review' %}<span class="tag">In review</span>{% endif %}
 {% endmacro %}
 
 {% macro citation(pub, surname) %}
   <span class="pub-authors">{{ pub.authors | authors(surname) }}</span>
-  <span class="pub-year">({{ pub.year }}).</span>
+  {% if pub.status != 'under_review' %}<span class="pub-year">({{ pub.year }}).</span>{% else %}<span class="pub-year">(in review).</span>{% endif %}
   <span class="pub-title">{{ pub.title }}.</span>
   <span class="pub-venue"><em>{{ pub.venue }}</em>{% if pub.details %}, {{ pub.details }}{% endif %}.</span>
 {% endmacro %}
 
-{% macro section_head(num, label, title) %}
-  <header class="section-head">
-    <p class="eyebrow"><span class="num">{{ num }}</span>{{ label }}</p>
+{# Section heading used inside pages #}
+{% macro head(eyebrow, title, lead=None, center=False) %}
+  <header class="sec-head{% if center %} center{% endif %}">
+    <p class="eyebrow">{{ eyebrow }}</p>
     <h2>{{ title }}</h2>
+    {% if lead %}<p class="lead-sm">{{ lead }}</p>{% endif %}
   </header>
 {% endmacro %}
 
-{% macro link_icon(kind) %}
+{# Page banner for inner pages #}
+{% macro page_header(eyebrow, title, lead) %}
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">{{ eyebrow }}</p>
+      <h1>{{ title }}</h1>
+      {% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro icon(kind) %}
   {% if kind == 'email' %}<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
   {% elif kind == 'linkedin' %}<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
   {% elif kind == 'orcid' %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 10v6M9 7.5v.01M12 8h2a4 4 0 0 1 0 8h-2V8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
   {% elif kind == 'scholar' %}<svg viewBox="0 0 24 24"><path d="M2 9.5 12 4l10 5.5-10 5.5L2 9.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 12v4.5c3.5 2.5 8.5 2.5 12 0V12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  {% elif kind == 'researchgate' %}<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 17V8h3a2.2 2.2 0 0 1 0 4.4H8M11 12.4 13.5 17M15 11.5h2.5M15 14.5h2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
   {% elif kind == 'github' %}<svg viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  {% else %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  {% elif kind == 'pin' %}<svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.800 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  {% elif kind == 'drop' %}<svg viewBox="0 0 24 24"><path d="M12 2.5C8.6 7 6 10.4 6 14a6 6 0 0 0 12 0c0-3.6-2.6-7-6-11.5Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.6 15.2c.6 1.6 1.9 2.6 3.6 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  {% elif kind == 'globe' %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  {% elif kind == 'layers' %}<svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m3 13 9 5 9-5M3 17.500l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" transform="translate(0 -1.500)"/></svg>
+  {% elif kind == 'sun' %}<svg viewBox="0 0 24 24"><path d="M3 17h18M6 17a6 6 0 0 1 12 0M12 5v3M4.500 9l2 2M19.500 9l-2 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5 21h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2 3"/></svg>
+  {% elif kind == 'network' %}<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.500" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="5" cy="18" r="2.500" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="19" cy="18" r="2.500" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m11 7.300-4.700 8.400M13 7.300l4.700 8.400M7.500 18h9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  {% elif kind == 'compass' %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m15.500 8.500-2 5-5 2 2-5 5-2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  {% elif kind == 'download' %}<svg viewBox="0 0 24 24"><path d="M12 4v11M7.500 11 12 15.500 16.500 11M5 20h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  {% else %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
   {% endif %}
 {% endmacro %}
 
@@ -39,11 +62,52 @@
     {% for kind, value in links.items() if value %}
       <li>
         {% if kind == 'email' %}
-          <a href="mailto:{{ value | obfuscate }}">{{ link_icon(kind) }}<span>{{ value | obfuscate }}</span></a>
+          <a href="mailto:{{ value | obfuscate }}">{{ icon(kind) }}<span>{{ value | obfuscate }}</span></a>
         {% else %}
-          <a href="{{ value }}" target="_blank" rel="noopener me">{{ link_icon(kind) }}<span>{{ LINK_LABELS.get(kind, kind | title) }}</span></a>
+          <a href="{{ value }}" target="_blank" rel="noopener me">{{ icon(kind) }}<span>{{ LINK_LABELS.get(kind, kind | title) }}</span></a>
         {% endif %}
       </li>
     {% endfor %}
   </ul>
+{% endmacro %}
+
+{# Enquiry form. There is no server: submitting opens the visitor's e-mail app with a
+   pre-filled message (see static/js/main.js). Nothing is sent to third parties. #}
+{% macro enquiry_form(id, email, interests, preselect='', kind='collaboration') %}
+  <form class="enquiry" id="{{ id }}" data-to="{{ email | obfuscate }}" data-kind="{{ kind }}" novalidate>
+    <div class="field-row">
+      <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+      <label class="field"><span>Your e-mail</span><input name="email" type="email" autocomplete="email" required></label>
+    </div>
+    <div class="field-row">
+      <label class="field"><span>Organisation</span><input name="organisation" autocomplete="organization"></label>
+      <label class="field"><span>Area of interest</span>
+        <select name="interest">
+          {% for i in interests %}<option value="{{ i.label }}" data-key="{{ i.value }}"{% if i.value == preselect %} selected{% endif %}>{{ i.label }}</option>{% endfor %}
+        </select>
+      </label>
+    </div>
+    <label class="field"><span>{% if kind == 'collaboration' %}Proposed collaboration{% else %}Your message{% endif %}</span>
+      <textarea name="message" rows="6" required placeholder="{% if kind == 'collaboration' %}What would you like to do together, and what is the context, timeline or funding situation?{% else %}How can I help?{% endif %}"></textarea>
+    </label>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Send enquiry by e-mail</button>
+      <p class="muted small">This opens your e-mail program with the message prepared. Nothing is stored on this website.</p>
+    </div>
+  </form>
+{% endmacro %}
+
+{% macro cta_band(title, text, primary, secondary=None) %}
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>{{ title }}</h2>
+        <p>{{ text }}</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="{{ primary[1] }}">{{ primary[0] }}</a>
+        {% if secondary %}<a class="btn btn-light" href="{{ secondary[1] }}">{{ secondary[0] }}</a>{% endif %}
+      </div>
+    </div>
+  </section>
 {% endmacro %}

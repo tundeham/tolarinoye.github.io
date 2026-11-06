@@ -1,30 +1,59 @@
 # ---------------------------------------------------------------------------
 # CONFERENCE CONTRIBUTIONS & INVITED TALKS: newest first.
 #   kind: talk | poster | invited | keynote | workshop
-# TODO titles below are condensed from your ICWRGC profile; paste the exact titles.
+# Titles from the ICWRGC bio and the 2026 CV.
 # ---------------------------------------------------------------------------
+
+talks:
+- year: 2025
+  kind: talk
+  title: "ISMN: a global data hub for in-situ soil moisture observations"   # TODO confirm exact title (taken from the slide)
+  event: IAHS Scientific Assembly (IAHS 2025)
+  location: Roorkee, India
+  featured: true
+
+- year: 2024
+  kind: keynote speaker
+  title: "Data acquisition and analysis in karst systems"
+  event: 31st International Karstological School "Classical Karst
+  location: Postojna, Slovenia
+  featured: True 
+
+- year: 2024
+  kind: poster
+  title: "The International Soil Moisture Network"
+  event: Drought resilience +10 conference
+  location: WMO, Geneva, Switzerland 
+
+- year: 2023
+  kind: talk and poster
+  title: "A new framework for karst hydrograph recession modeling: introducing variable initial storage conditions and parameter uncertainty"
+  event: AGU Fall Meeting
+  location: San Francisco, USA
+  coauthors:  Rinderer Michael, Gleeson Tom, Hartmann Andreas 
 
 - year: 2022
   kind: talk
-  title: The International Soil Moisture Network (ISMN)
+  title: "The International Soil Moisture Network: supporting and advancing EO research through open source in-situ soil moisture observations"
   event: EGU General Assembly
   location: Vienna, Austria
+  coauthors: Boehmer, Dietrich, Zink, Himmelbauer
 
 - year: 2020
   kind: talk
-  title: Automatic recession extraction method for large samples of karst springs
-  event: AGU Fall Meeting
+  title: An automatic recession extraction and parameter estimation method for large-sample karst spring analysis
+  event: AGU Fall Meeting (interactive presentation)
   location: Online
 
 - year: 2020
   kind: talk
-  title: Conduit and matrix recession coefficients of karst springs
-  event: Karst workshop
+  title: A new approach for automatic extraction of karst conduit and matrix recession coefficients
+  event: Workshop on sustainability and community in support of UNESCO science programs
   location: Kentucky, USA
 
 - year: 2019
   kind: talk
-  title: Comparative karst hydrology using a global spring-discharge database
+  title: Applicability of automatic recession extraction methods to a large number of karst spring hydrographs
   event: International Karstological School "Classical Karst"
   location: Postojna, Slovenia
 
@@ -36,18 +65,50 @@
 
 - year: 2019
   kind: talk
-  title: The first global karst spring discharge database
+  title: The first global database of karst spring discharge observations
   event: EGU General Assembly
   location: Vienna, Austria
 
 - year: 2018
   kind: talk
-  title: Comparative karst hydrology
+  title: Unravelling the hydrodynamic behavior of karst systems through comparative hydrology
   event: EuroKarst
   location: Besançon, France
 
 - year: 2017
   kind: poster
-  title: Hydrochemical water types in the Maputo coastal aquifer
+  title: Mapping and evolution of hydrochemical water types in the Maputo coastal aquifer
   event: 44th IAH Congress
   location: Dubrovnik, Croatia
+  coauthors: Nogueira, Stigter, Marc
+
+# Sessions, workshops and community events convened or organised
+convened:
+  - year: "2025"
+    role: Lead
+    title: Joint ISMN / IAHS HELPING side event and workshop
+    event: IAHS Scientific Assembly, Roorkee, India
+  - year: "2023"
+    role: Initiator and lead convener
+    title: "Data services in hydrological research and management"
+    event: EGU General Assembly, Vienna (with ISMN, GRDC, GWDC, IGRAC and GTN-H as co-conveners)
+  - year: "Since 2023"
+    role: Organiser
+    title: Annual ISMN splinter meeting for soil moisture data providers, users and product developers
+    event: EGU General Assembly, Vienna
+  - year: "Since 2022"
+    role: Organiser
+    title: Virtual ISMN data-provider workshop series
+    event: Online (since February 2022)
+  - year: "2022"
+    role: Co-convener
+    title: "Large-sample hydrology: characterizing and understanding hydrological diversity and catchment organization"
+    event: EGU General Assembly, Vienna
+  - year: "2019"
+    role: Organising team
+    title: 46th International Association of Hydrogeologists Congress
+    event: Málaga, Spain
+  - year: "2019"
+    role: Co-organiser
+    title: PhD workshop on hydrological modelling across landscapes
+    event: University of Freiburg

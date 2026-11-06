@@ -1,8 +1,44 @@
 # ---------------------------------------------------------------------------
-# PUBLICATIONS: order doesn't matter; they're sorted by year (newest first).
+# PUBLICATIONS: sorted by year (newest first).
 #   type:     article | preprint | thesis | dataset | chapter | report
-# Your surname (profile.yaml → surname) is highlighted automatically.
+#   status:   under_review (shown separately, not counted as published)
+#   featured: true → highlighted on the Research page and the homepage
+# The surname in profile.yaml is highlighted automatically.
 # ---------------------------------------------------------------------------
+
+- type: article
+  year: 2026
+  authors: ["Abraham, T.", "Olarinoye, T.", "Hartmann, A.", "Hendricks Franssen, H.J.", "Liu, Y."] 
+  title: "Towards cooperation on transboundary rivers: achieving a win–win balance between upstream hydropower generation and downstream water demand under climate change"
+  venue: Journal of Hydrology
+  doi: 10.1016/j.jhydrol.2026.135111
+  topic: Transboundary water cooperation
+  summary: Shows how upstream hydropower and downstream water demand can be balanced under climate change, a basis for cooperation between riparian countries.
+
+- type: book chapter
+  year: 2026
+  authors: ["Frank Kaspar", "Simon A. Mischel", "Stephan Dietrich", "Lena Fay Boehmer", "Moritz Heinle", "Rainer Hollmann", "Hannes Konrad", "Wolfgang Korres", "Kasjen Kramer", "Dmytro Lisniak et al."] 
+  title: "Beiträge zur Beobachtung des globalen Wasserkreislaufs"
+  venue: "Warnsignal klima: Die Landwirtschaft, Wissenschaftliche Auswertungen - in Kooperation mit GEO, Hamburg, Hamburg"
+  details: "pp. 50-56"
+  doi: 10.25592/uhhfdm.18844
+  open_access: true
+  isbn: 978 3982 006789
+  topic: Global water cycle
+  summary: The book chapter describes the activities of the water-related international data centres in Germany and provides an insight into key contributions based on satellite data. Limitations in data availability and quality are discussed.
+  
+
+- type: article
+  year: 2023
+  authors: ["Berthelin, Romane", "Olarinoye, Tunde", "Rinderer, Michael", "Mudarra, M.", "Demand, Dominic", "Scheller, Mirjam", "Hartmann, Andreas"]
+  title: Estimating karst groundwater recharge from soil moisture observations – a new method tested at the Swabian Alb, southwest Germany
+  venue: Hydrology and Earth System Sciences
+  details: "27. 385-400"
+  doi: 10.5194/hess-27-385-2023
+  open_access: true
+  topic: Hydrological modelling
+  summary: Estimates karst groundwater recharge from soil moisture observations.
+
 
 - type: article
   year: 2022
@@ -12,6 +48,9 @@
   details: "26, 5431–5447"
   doi: 10.5194/hess-26-5431-2022
   open_access: true
+  featured: true
+  topic: Hydrological modelling
+  summary: Objective, automated methods that separate and classify fast and slow flow in spring hydrographs, making large-sample studies feasible.
 
 - type: article
   year: 2021
@@ -21,6 +60,8 @@
   details: "29, 315–329"        # TODO verify volume/pages
   doi: 10.1007/s10040-020-02258-z
   open_access: true
+  topic: Groundwater
+  summary: Combines fieldwork with large-scale modelling for more reliable assessment of karst water resources.
 
 - type: article
   year: 2020
@@ -30,6 +71,9 @@
   details: "7, 59"
   doi: 10.1038/s41597-019-0346-5
   open_access: true
+  featured: true
+  topic: Water information systems
+  summary: WoKaS, the first global open database of karst spring discharge, built from literature, hydrological databases and researchers worldwide.
 
 - type: article
   year: 2020
@@ -37,10 +81,28 @@
   title: Exploring the future impacts of urbanization and climate change on groundwater in Arusha, Tanzania
   venue: Water International
   doi: 10.1080/02508060.2020.1768724
+  featured: true
+  topic: Climate resilience
+  summary: Scenario assessment of how urban growth and climate change together affect groundwater in a fast-growing East African city.
+
+- type: preprint
+  status: under_review
+  year: 2026
+  authors: ["Mirgol, B.", "Dogulu, N.", "Dieppois, B.", "Olarinoye, T.", "et al."]
+  title: "Artificial intelligence and machine learning in hydrology: global perspectives on adoptions, trust, challenges, and future directions"
+  venue: Nature Communications (in review)
+
+- type: preprint
+  status: under_review
+  year: 2026
+  authors: ["Olarinoye, T.", "Rinderer, M.", "Gleeson, T.", "Hartmann, A."]
+  title: Redefining karst hydrograph recession analysis; introducing variable matrix fractions and parameters uncertainty
+  venue: Water Resources Research (in review), preprint
+  doi: 10.22541/essoar.15006809/v1     # TODO verify: this DOI looks truncated
 
 - type: thesis
-  year: 2022                    # TODO verify
+  year: 2022
   authors: ["Olarinoye, T."]
-  title: Unravelling the hydrodynamic behaviour of karst aquifer systems through comparative hydrology
+  title: Unravelling the hydrodynamic behavior of karst aquifer systems through comparative hydrology
   venue: Ph.D. thesis, University of Freiburg
   url: ""                       # TODO link to FreiDok repository entry

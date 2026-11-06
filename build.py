@@ -34,10 +34,21 @@ OUT = ROOT / "_site"
 # template name → output path
 PAGES = {
     "index.html": "index.html",
+    "about.html": "about/index.html",
+    "research.html": "research/index.html",
+    "expertise.html": "expertise/index.html",
+    "advisory.html": "advisory/index.html",
+    "collaborate.html": "collaborate/index.html",
+    "insights.html": "insights/index.html",
+    "contact.html": "contact/index.html",
     "cv.html": "cv/index.html",
+    "resume.html": "resume/index.html",
+    "profile_sheet.html": "profile-sheet/index.html",
     "legal.html": "legal/index.html",
     "404.html": "404.html",
 }
+# pages that stay out of the sitemap
+NOT_IN_SITEMAP = {"404.html", "legal/index.html"}
 
 PUB_TYPE_LABELS = {
     "article": "Journal articles",
@@ -52,26 +63,32 @@ PUB_TYPE_LABELS = {
 # --------------------------------------------------------------------------- content
 def load_content() -> dict:
     data = {f.stem: yaml.safe_load(f.read_text(encoding="utf-8")) or {} for f in sorted(CONTENT.glob("*.yaml"))}
+    pres = data.get("presentations", {})
+    data["conference_talks"] = pres.get("talks", [])
+    data["convened"] = pres.get("convened", [])
+    proj = data.get("projects", {})
+    data["projects"] = proj.get("items", [])
+    data["projects_participations"] = proj.get("participations", [])
     pubs = sorted(data.get("publications", []), key=lambda p: (-int(p.get("year", 0)), p.get("title", "")))
-    data["publications"] = pubs
-    data["pub_types"] = [(t, PUB_TYPE_LABELS.get(t, t.title())) for t in dict.fromkeys(p.get("type", "article") for p in pubs)]
+    published = [p for p in pubs if p.get("status") != "under_review"]
+    data["publications"] = published
+    data["in_review"] = [p for p in pubs if p.get("status") == "under_review"]
+    data["pub_types"] = [(t, PUB_TYPE_LABELS.get(t, t.title())) for t in dict.fromkeys(p.get("type", "article") for p in published)]
+    n_articles = sum(p.get("type") == "article" for p in published)
+    years = [int(p["year"]) for p in published if p.get("type") == "article" and p.get("year")]
     data["stats"] = {
-        "articles": sum(p.get("type") == "article" for p in pubs),
-        "talks": len(data.get("presentations", [])),
-        "first_year": min((int(p["year"]) for p in pubs if p.get("year")), default=None),
+        "articles": n_articles,
+        "talks": len(data["conference_talks"]),
+        "first_year": min(years, default=None),
+        "last_year": max(years, default=None),
     }
-    data["profile"]["photo"], data["profile"]["photo_is_placeholder"] = find_photo(data["profile"].get("photo"))
+    # credibility tiles may use the computed article count as "{articles}"
+    for c in data["profile"].get("credibility", []):
+        c["value"] = str(c["value"]).replace("{articles}", str(n_articles))
+    data["featured_pubs"] = [p for p in published if p.get("featured")]
+    data["featured_projects"] = [p for p in data.get("projects", []) if p.get("featured")]
+    data["profile"]["photo_is_placeholder"] = not (STATIC / data["profile"]["photo"]).exists()
     return data
-
-
-def find_photo(configured: str | None) -> tuple[str, bool]:
-    """Use the configured photo, else static/img/profile.{jpg,jpeg,png,webp}, else the placeholder."""
-    if configured and (STATIC / configured).exists():
-        return configured, False
-    for ext in ("jpg", "jpeg", "png", "webp"):
-        if (STATIC / "img" / f"profile.{ext}").exists():
-            return f"img/profile.{ext}", False
-    return "img/profile_photo.PNG", True
 
 
 def warn_todos() -> None:
@@ -143,18 +160,41 @@ def json_ld(data: dict) -> dict:
     """schema.org Person: helps search engines and scholarly crawlers understand the page."""
     p = data["profile"]
     same_as = [v for k, v in p.get("links", {}).items() if v and k != "email"]
+    cp = p.get("current_position") or {}
     ld = {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": p["name"],
         "honorificPrefix": p.get("honorific") or None,
-        "jobTitle": p["headline"],
-        "alumniOf": [{"@type": "CollegeOrUniversity", "name": e["institution"]} for e in data.get("education", [])],
-        "knowsAbout": p.get("research_interests", []),
+        "jobTitle": p["title"],
+        "description": p["site"]["description"],
+        "image": f"{p['site']['url'].rstrip('/')}/{p['photo']}",
+        "worksFor": {"@type": "Organization", "name": cp["organisation"], "url": cp.get("url")} if cp else None,
+        "alumniOf": [{"@type": "CollegeOrUniversity", "name": e["institution"].split(" · ")[0]} for e in data.get("education", [])],
+        "knowsAbout": p.get("research_interests", []) + ["hydrology", "water resources", "soil moisture", "groundwater"],
+        "address": {"@type": "PostalAddress", "addressCountry": "DE"},
         "url": p["site"]["url"],
         "sameAs": same_as,
     }
     return {k: v for k, v in ld.items() if v}
+
+
+PDFS = {"cv/index.html": "Olarinoye-CV.pdf", "resume/index.html": "Olarinoye-Resume.pdf",
+        "profile-sheet/index.html": "Olarinoye-Profile.pdf"}
+
+
+def build_pdfs() -> None:
+    """Render the print-ready pages to downloadable PDFs (needs WeasyPrint; skipped if absent)."""
+    try:
+        import logging
+        from weasyprint import HTML
+    except ImportError:
+        print("! weasyprint not installed: PDFs skipped (pip install -r requirements.txt)")
+        return
+    logging.getLogger("weasyprint").setLevel(logging.ERROR)
+    (OUT / "downloads").mkdir(exist_ok=True)
+    for src, name in PDFS.items():
+        HTML(filename=str(OUT / src)).write_pdf(str(OUT / "downloads" / name))
 
 
 def build() -> None:
@@ -181,13 +221,13 @@ def build() -> None:
         # relative asset paths so the site works on any (sub)path; the 404 page can be
         # served at any URL depth, so it gets an absolute one instead
         root = urlparse(site_url).path.rstrip("/") + "/" if tpl == "404.html" else "../" * dest.count("/") or "./"
-        html = env.get_template(tpl).render(**ctx, page=tpl, root=root)
+        html = env.get_template(tpl).render(**ctx, page=tpl, root=root, canonical_path=dest.removesuffix("index.html"))
         target = OUT / dest
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html, encoding="utf-8")
 
     # SEO / hosting helpers
-    urls = [d.removesuffix("index.html") for d in PAGES.values() if d not in ("404.html", "legal/index.html") and (OUT / d).exists()]
+    urls = [d.removesuffix("index.html") for d in PAGES.values() if d not in NOT_IN_SITEMAP and (OUT / d).exists()]
     (OUT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{site_url}/{u}</loc><lastmod>{ctx['build_date']}</lastmod></url>\n" for u in urls)
@@ -196,6 +236,7 @@ def build() -> None:
     )
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n", encoding="utf-8")
     (OUT / ".nojekyll").touch()  # tell GitHub Pages not to run Jekyll
+    build_pdfs()
     print(f"✓ built {len(PAGES)} pages → {OUT.relative_to(ROOT)}/ in {time.perf_counter() - t0:.2f}s")
 
 

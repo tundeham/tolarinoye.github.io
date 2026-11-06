@@ -1,0 +1,52 @@
+# ---------------------------------------------------------------------------
+# INSIGHTS & SPEAKING
+#   articles: commentary and writing (add entries as they are published)
+#   highlights: plain-language summaries of research
+#   media: interviews, podcasts, press (add when available)
+#   topics: talks and workshops offered
+# Nothing here is invented: empty lists show a short "coming soon" note.
+# ---------------------------------------------------------------------------
+
+intro: >-
+  Water science matters most when it is understood. This page collects research
+  highlights, conference contributions and the talks and workshops I offer.
+
+articles: []
+# Example:
+# - date: "2026-12-01"
+#   title: Why open soil moisture data matters for drought early warning
+#   summary: ...
+#   url: https://...
+#   outlet: LinkedIn
+
+highlights:
+  - title: A global view of karst springs
+    paper: Scientific Data (2020)
+    text: Karst aquifers supply drinking water to a large part of the world's population but are hard to compare because data are scattered. WoKaS brings spring discharge records from around the world together in one open dataset, so researchers and managers can see how these fast-flowing aquifers behave in different climates.
+    link: https://doi.org/10.1038/s41597-019-0346-5
+  - title: Reading the memory of a spring
+    paper: Hydrology and Earth System Sciences (2022)
+    text: How quickly a spring dries out after rain reveals how its aquifer stores and drains water. Automated methods now separate fast conduit flow from slow matrix flow objectively, replacing subjective manual fitting and allowing hundreds of springs to be analysed consistently.
+    link: https://doi.org/10.5194/hess-26-5431-2022
+  - title: Groundwater in a growing city
+    paper: Water International (2020)
+    text: In Arusha, Tanzania, urban growth and a changing climate both put pressure on groundwater. Scenario analysis shows where the pressure is greatest and what planners should watch.
+    link: https://doi.org/10.1080/02508060.2020.1768724
+  - title: Sharing water across borders
+    paper: Journal of Hydrology (2026)
+    text: Upstream hydropower and downstream water demand are often seen as competing. The study identifies operating conditions under which both sides can benefit, even under climate change.
+    link: https://doi.org/10.1016/j.jhydrol.2026.135111
+
+topics:
+  keynotes:
+    - Open data for resilient water governance
+    - "Soil moisture observations: from the field to Earth observation validation"
+    - "Connecting global water data centres: what users and policy makers need"
+    - Karst groundwater and climate change
+  workshops:
+    - Working with hydrological and soil moisture data in Python
+    - Recession analysis and hydrograph interpretation
+    - Communicating water science to decision makers
+    - Designing data services for scientific communities
+
+media: []

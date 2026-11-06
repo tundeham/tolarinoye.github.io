@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Insights and Speaking | {{ profile.name }}, Water Resources Scientist{% endblock %}
+{% block description %}Research highlights, conference presentations, convened sessions and the keynotes and workshops offered by Dr. Tunde Olarinoye.{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+{{ m.page_header("Insights & speaking", "Making water science visible and useful", insights.intro) }}
+
+<section class="section" id="highlights">
+  <div class="container">
+    {{ m.head("Research highlights", "Findings in plain language") }}
+    <div class="cards cards-2">
+      {% for h in insights.highlights %}
+      <article class="card">
+        <p class="card-meta">{{ h.paper }}</p>
+        <h3 class="card-title">{{ h.title }}</h3>
+        <p class="card-text">{{ h.text }}</p>
+        <a class="link-arrow" href="{{ h.link }}" target="_blank" rel="noopener">Read the paper</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-mist" id="articles">
+  <div class="container">
+    {{ m.head("Articles and professional commentary", "Writing") }}
+    {% if insights.articles %}
+    <ul class="article-list">
+      {% for a in insights.articles %}
+      <li><span class="mono muted">{{ a.date }}</span> <a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title }}</a>{% if a.outlet %} <span class="muted">· {{ a.outlet }}</span>{% endif %}<br><span class="muted">{{ a.summary }}</span></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty">Commentary on open data, soil moisture, and the link between water science and decision making is in preparation. To be notified, <a href="{{ root }}contact/">get in touch</a> or follow on <a href="{{ p.links.linkedin }}" target="_blank" rel="noopener me">LinkedIn</a>.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section" id="conferences">
+  <div class="container">
+    {{ m.head("Conference presentations", "Talks and posters") }}
+    <ul class="talks">
+      {% for t in conference_talks %}
+      <li class="talk">
+        <span class="talk-year">{{ t.year }}</span>
+        <span class="talk-body">
+          <span class="talk-title">{{ t.title }}</span>
+          <span class="talk-event">{{ t.event }} · {{ t.location }}</span>
+        </span>
+        <span class="tag">{{ t.kind }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section-mist" id="convened">
+  <div class="container">
+    {{ m.head("Sessions, workshops and events convened", "Convening the community") }}
+    <ul class="talks">
+      {% for c in convened %}
+      <li class="talk">
+        <span class="talk-year">{{ c.year }}</span>
+        <span class="talk-body">
+          <span class="talk-title">{{ c.title }}</span>
+          <span class="talk-event">{{ c.event }}</span>
+        </span>
+        <span class="tag">{{ c.role }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="speaking">
+  <div class="container">
+    {{ m.head("Keynotes, workshops and expert panels", "Talks and workshops I offer", "Available for conference keynotes, technical workshops, institutional seminars and expert panels.") }}
+    <div class="two-col">
+      <div>
+        <h3 class="mini-head">Keynote and seminar topics</h3>
+        <ul class="tl-points">{% for x in insights.topics.keynotes %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+      <div>
+        <h3 class="mini-head">Workshop and training topics</h3>
+        <ul class="tl-points">{% for x in insights.topics.workshops %}<li>{{ x }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+    <h3 class="subhead">Media contributions and interviews</h3>
+    {% if insights.media %}
+    <ul class="plain-list">{% for x in insights.media %}<li>{{ x.title }}</li>{% endfor %}</ul>
+    {% else %}
+    <p class="muted">No media contributions listed yet. For interview or speaking requests, please <a href="{{ root }}contact/">get in touch</a>.</p>
+    {% endif %}
+  </div>
+</section>
+
+{{ m.cta_band("Invite me to speak", "Keynotes, workshops, seminars and expert panels on water data, soil moisture and groundwater.", ("Speaking enquiry", root ~ "contact/?topic=speaking#enquiry")) }}
+{% endblock %}

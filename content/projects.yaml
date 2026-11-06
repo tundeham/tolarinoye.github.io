@@ -1,32 +1,92 @@
 # ---------------------------------------------------------------------------
-# FLAGSHIP INITIATIVES: shown in the "Impact" section.
-#   role / years / summary / outcome are free text; link is optional.
+# RESEARCH & PROJECTS: role, contributions, outputs. Shown on the Research page;
+# items with featured: true also appear on the homepage ("Selected research").
 # ---------------------------------------------------------------------------
 
+items:
 - name: World Karst Spring Hydrographs (WoKaS)
+  short: WoKaS
+  featured: true
+  theme: Water information systems · Groundwater
   role: Lead
   years: "2018–2020"
-  summary: Compiled the first global open database of karst spring discharge from literature, hydrological databases and researchers worldwide.
-  outcome: 400+ springs; published in Scientific Data (2020) and now supports comparative karst research.
+  summary: Compiled the first global open database of karst spring discharge from literature, hydrological databases and researchers worldwide, giving hydrologists a common basis to compare how karst aquifers behave in different climates.
+  contributions:
+    - Led data collection, harmonisation and quality control.
+    - Designed the dataset for open, reusable research and management use.
+  outcome: 400+ springs; published in Scientific Data (2020), the primary reference for comparative karst research.
   link: https://doi.org/10.1038/s41597-019-0346-5
+  link_label: Read the paper
 
-- name: Automated karst recession analysis
+- name: Soil moisture monitoring and global observation networks
+  short: ISMN
+  featured: true
+  theme: Soil moisture · Hydroclimatic data
+  role: Scientific Officer, data acquisition and products
+  years: "2021–present"
+  summary: The International Soil Moisture Network (ISMN) is a global hub for in-situ soil moisture observations, with data collection, harmonisation, advanced quality control and free, FAIR access. It is widely used to validate satellite and model products.
+  contributions:
+    - Acquire and process data from the international provider network and develop new data products.
+    - Lead outreach, user and provider engagement, and communication.
+    - "Organise community events: an EGU data-services session, an annual splinter meeting and a virtual provider workshop series."
+  outcome: As presented at IAHS 2025, more than 80 data providers and 3,000 stations, with time series from 1952 to near real time.
+  link: https://ismn.earth
+  link_label: Visit ISMN
+
+- name: Hydrological data integration and information systems
+  short: Data
+  featured: true
+  theme: Water information systems
+  role: Science and data-services development
+  years: "2021–present"
+  summary: Work on how global hydrological data centres and networks can be better connected and communicated, so that data services serve research, monitoring and water management together.
+  contributions:
+    - Initiated and led a cross-institutional EGU session with ISMN, GRDC, GWDC, IGRAC and GTN-H as co-conveners (2023).
+    - Contributed to a catalogue of six decades of German contributions to hydrology and the UNESCO International Hydrological Programme.
+  outcome: A recurring forum for hydrological data services and new links between global data centres.
+
+- name: Hydroclimatic processes and water resources
+  short: Hydroclimatic
+  featured: true
+  theme: Hydrological modelling · Climate resilience
   role: First author
   years: "2019–2022"
-  summary: Developed objective, automated methods to separate and classify fast- and slow-flow components of spring recession.
+  summary: Developed objective, automated methods to separate and classify the fast (conduit) and slow (matrix) components of spring recession, and tested them on large samples of hydrographs across contrasting climates.
+  contributions:
+    - Built automated recession extraction and parameter estimation for large-sample analysis.
+    - Extended the approach with uncertainty-aware, variable-matrix-fraction recession analysis (in review).
   outcome: Replaces manual, subjective analysis and makes large-sample studies feasible (HESS, 2022).
   link: https://doi.org/10.5194/hess-26-5431-2022
-
-- name: International Soil Moisture Network (ISMN)
-  role: Data acquisition, products & web
-  years: "Current"
-  summary: Acquire in-situ soil-moisture data and develop data products, and lead public outreach and front-end development for this global service.
-  outcome: Open, quality-controlled global soil-moisture data for research, climate and water applications.
-  link: https://ismn.earth
+  link_label: Read the paper
 
 - name: Groundwater under urbanisation and climate change, Arusha
+  short: Arusha
+  theme: Climate resilience · Groundwater
   role: Lead author
   years: "2017–2018"
-  summary: Explored how urban growth and climate change jointly affect groundwater resources in a fast-growing East African city.
-  outcome: Published in Water International (2020) with partners from Tanzania and the Netherlands.
+  summary: Explored how urban growth and climate change jointly affect groundwater resources in a fast-growing East African city, with partners from Tanzania and the Netherlands.
+  contributions:
+    - Water-balance and scenario assessment under land-use and climate change.
+    - Field mapping and ground-truthing of satellite-derived land-use maps.
+  outcome: Published in Water International (2020).
   link: https://doi.org/10.1080/02508060.2020.1768724
+  link_label: Read the paper
+
+- name: Transboundary river cooperation
+  short: Transboundary
+  theme: Climate resilience · International cooperation
+  role: Co-author
+  years: "2026"
+  summary: Quantified the trade-off between upstream hydropower generation and downstream water demand under climate change, identifying where both sides can gain.
+  outcome: Published in the Journal of Hydrology (2026).
+  link: https://doi.org/10.1016/j.jhydrol.2026.135111
+  link_label: Read the paper
+
+# Further project participations (listed on the CV and Research page)
+participations:
+  - years: "Since 2018"
+    name: Global assessment of water stress in karst regions in a changing world (GloW)
+  - years: "2017"
+    name: Experimenting with practical Transitional Groundwater Management Strategies for the Urban Poor in Sub-Saharan Africa (T-GroUP)
+  - years: "2016"
+    name: Mitigating groundwater salinity impacts for improved water security in coastal areas under socio-economic and climate change (SALINPROVE)

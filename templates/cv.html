@@ -1,120 +1,141 @@
 {% extends "base.html" %}
 {% import "_macros.html" as m %}
 
-{% block title %}Curriculum Vitae · {{ profile.name }}{% endblock %}
-{% block canonical %}cv/{% endblock %}
+{% block title %}Academic &amp; Scientific CV | {{ profile.name }}{% endblock %}
+{% block description %}Academic and scientific curriculum vitae of Dr. Tunde Olarinoye: qualifications, research experience, publications, projects, skills and conference contributions.{% endblock %}
 
 {% block content %}
 {% set p = profile %}
-<div class="container cv">
-  <div class="cv-toolbar no-print">
-    <a href="../" class="muted">← Back to website</a>
-    <button class="btn btn-primary" type="button" onclick="window.print()">Download PDF</button>
+<div class="container doc cv">
+  <div class="doc-toolbar no-print">
+    <a href="{{ root }}about/#downloads" class="muted">← Back to website</a>
+    <span class="doc-switch"><a href="{{ root }}resume/">International résumé</a> · <a href="{{ root }}profile-sheet/">One-page profile</a></span>
+    <button class="btn btn-primary" type="button" onclick="window.print()">Save as PDF</button>
   </div>
 
-  <header class="cv-header">
+  <header class="doc-header">
     <div>
       <h1>{{ p.honorific }} {{ p.name }}</h1>
-      <p class="cv-headline">{{ p.headline }} · {{ p.current_position.title }}, {{ p.current_position.organisation }}</p>
+      <p class="doc-headline">{{ p.title }}</p>
+      <p class="doc-sub">Academic &amp; Scientific Curriculum Vitae</p>
     </div>
-    <ul class="cv-contact">
+    <ul class="doc-contact">
       <li>{{ p.location }}</li>
       {% if p.links.email %}<li><a href="mailto:{{ p.links.email | obfuscate }}">{{ p.links.email | obfuscate }}</a></li>{% endif %}
       <li><a href="{{ site_url }}/">{{ site_url | replace('https://', '') }}</a></li>
-      {% if p.links.orcid %}<li><a href="{{ p.links.orcid }}">ORCID: {{ p.links.orcid.rsplit('/', 1)[-1] }}</a></li>{% endif %}
+      {% if p.links.orcid %}<li><a href="{{ p.links.orcid }}">ORCID {{ p.links.orcid.rsplit('/', 1)[-1] }}</a></li>{% endif %}
+      {% if p.links.researchgate %}<li><a href="{{ p.links.researchgate }}">ResearchGate</a></li>{% endif %}
       {% if p.links.linkedin %}<li><a href="{{ p.links.linkedin }}">LinkedIn</a></li>{% endif %}
     </ul>
   </header>
 
-  <section class="cv-section">
+  <section class="doc-section">
     <h2>Profile</h2>
-    <p>{{ p.about[0] }}</p>
+    <p>{{ p.bio_short }}</p>
   </section>
 
-  <section class="cv-section">
-    <h2>Core competencies</h2>
-    <dl class="cv-skills">
-      {% for e in expertise %}<dt>{{ e.title }}</dt><dd>{{ e.text }}</dd>{% endfor %}
-    </dl>
-  </section>
-
-  <section class="cv-section">
-    <h2>Professional experience</h2>
-    {% for job in experience %}
-    <div class="cv-entry">
-      <p class="cv-date">{{ job.start | daterange(job.end) }}</p>
-      <div>
-        <p class="cv-title">{{ job.role }}</p>
-        <p class="cv-org">{{ job.organisation }}, {{ job.location }}</p>
-        {% if job.highlights %}<ul>{% for h in job.highlights %}<li>{{ h }}</li>{% endfor %}</ul>{% endif %}
-      </div>
-    </div>
-    {% endfor %}
-  </section>
-
-  <section class="cv-section">
+  <section class="doc-section">
     <h2>Education</h2>
     {% for ed in education %}
-    <div class="cv-entry">
-      <p class="cv-date">{{ ed.start | daterange(ed.end) }}</p>
+    <div class="doc-entry">
+      <p class="doc-date">{{ ed.start | daterange(ed.end) }}</p>
       <div>
-        <p class="cv-title">{{ ed.degree }}</p>
-        <p class="cv-org">{{ ed.institution }}, {{ ed.location }}</p>
-        {% if ed.thesis %}<p class="cv-note">Thesis: <em>{{ ed.thesis }}</em></p>{% endif %}
+        <p class="doc-title">{{ ed.degree }}</p>
+        <p class="doc-org">{{ ed.institution }}, {{ ed.location }}</p>
+        {% if ed.note %}<p class="doc-note">{{ ed.note }}</p>{% endif %}
+        {% if ed.thesis %}<p class="doc-note">Thesis: <em>{{ ed.thesis }}</em></p>{% endif %}
         {% if ed.details %}<ul>{% for d in ed.details %}<li>{{ d }}</li>{% endfor %}</ul>{% endif %}
       </div>
     </div>
     {% endfor %}
   </section>
 
-  <section class="cv-section">
-    <h2>Publications</h2>
-    {% for key, label in pub_types %}
-    <h3>{{ label }}</h3>
-    <ol class="cv-pubs">
-      {% for pub in publications if pub.type == key %}
-      <li>{{ m.citation(pub, p.surname) }}{% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">doi:{{ pub.doi }}</a>{% endif %}</li>
-      {% endfor %}
-    </ol>
+  <section class="doc-section">
+    <h2>Research and professional experience</h2>
+    {% for job in experience %}
+    <div class="doc-entry">
+      <p class="doc-date">{{ job.start | daterange(job.end) }}</p>
+      <div>
+        <p class="doc-title">{{ job.role }}</p>
+        <p class="doc-org">{{ job.organisation }}, {{ job.location }}</p>
+        {% if job.highlights %}<ul>{% for h in job.highlights %}<li>{{ h }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </div>
     {% endfor %}
   </section>
 
-  <section class="cv-section">
-    <h2>Conference contributions</h2>
-    <ul class="cv-compact">
-      {% for t in presentations %}
-      <li><span class="cv-date-inline">{{ t.year }}</span> {{ t.title }}. <em>{{ t.event }}</em>, {{ t.location }} ({{ t.kind }}).</li>
+  <section class="doc-section">
+    <h2>Scientific publications</h2>
+    {% for key, label in pub_types %}
+    <h3>{{ label }}</h3>
+    <ol class="doc-pubs">
+      {% for pub in publications if pub.type == key %}
+      <li>{{ m.citation(pub, p.surname) }}{% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">https://doi.org/{{ pub.doi }}</a>{% endif %}</li>
       {% endfor %}
+    </ol>
+    {% endfor %}
+    {% if in_review %}
+    <h3>Submitted / in review</h3>
+    <ul class="doc-pubs">
+      {% for pub in in_review %}<li>{{ m.citation(pub, p.surname) }}{% if pub.doi %} <a href="https://doi.org/{{ pub.doi }}">https://doi.org/{{ pub.doi }}</a>{% endif %}</li>{% endfor %}
+    </ul>
+    {% endif %}
+  </section>
+
+  <section class="doc-section">
+    <h2>Research projects</h2>
+    <ul class="doc-compact">
+      {% for pr in projects %}<li><span class="doc-date-inline">{{ pr.years }}</span> <strong>{{ pr.name }}</strong> ({{ pr.role }}). {{ pr.outcome }}</li>{% endfor %}
+      {% for x in projects_participations %}<li><span class="doc-date-inline">{{ x.years }}</span> {{ x.name }}</li>{% endfor %}
     </ul>
   </section>
 
-  <section class="cv-section cv-two">
-    <div>
-      <h2>Teaching</h2>
-      <ul class="cv-compact">
-        {% for t in activities.teaching %}<li><span class="cv-date-inline">{{ t.year }}</span> {{ t.title }}, {{ t.where }}</li>{% endfor %}
-      </ul>
-    </div>
-    <div>
-      <h2>Service</h2>
-      <ul class="cv-compact">
-        {% for s in activities.service %}<li><span class="cv-date-inline">{{ s.year }}</span> {{ s.title }}, {{ s.where }}</li>{% endfor %}
-      </ul>
-    </div>
-  </section>
-
-  <section class="cv-section">
-    <h2>Skills &amp; languages</h2>
-    <dl class="cv-skills">
-      {% for group, items in activities.skills.items() %}
-      <dt>{{ group }}</dt><dd>{{ items | join(' · ') }}</dd>
+  <section class="doc-section">
+    <h2>Conference contributions</h2>
+    <ul class="doc-compact">
+      {% for t in conference_talks %}
+      <li><span class="doc-date-inline">{{ t.year }}</span> {{ t.title }}. <em>{{ t.event }}</em>, {{ t.location }} ({{ t.kind }}).</li>
       {% endfor %}
-      {% if activities.languages %}
-      <dt>Languages</dt><dd>{% for l in activities.languages %}{{ l.name }} ({{ l.level }}){% if not loop.last %} · {% endif %}{% endfor %}</dd>
-      {% endif %}
-    </dl>
+    </ul>
+    <h3>Sessions and events convened or organised</h3>
+    <ul class="doc-compact">
+      {% for c in convened %}<li><span class="doc-date-inline">{{ c.year }}</span> {{ c.title }}, {{ c.event }} ({{ c.role | lower }}).</li>{% endfor %}
+    </ul>
   </section>
 
-  <p class="cv-footer muted">Referees available on request. Last updated {{ build_date.strftime('%B %Y') }} · Online version: {{ site_url }}/cv/</p>
+  <section class="doc-section">
+    <h2>Teaching, supervision and mentoring</h2>
+    <ul class="doc-compact">
+      {% for t in activities.teaching %}<li><span class="doc-date-inline">{{ t.year }}</span> {{ t.title }}, {{ t.where }}.</li>{% endfor %}
+      {% for s in activities.supervision %}<li><span class="doc-date-inline">{{ s.year }}</span> {{ s.level }}: {{ s.student }}, <em>{{ s.topic }}</em>.</li>{% endfor %}
+    </ul>
+  </section>
+
+  <section class="doc-section">
+    <h2>Technical skills and languages</h2>
+    <dl class="doc-skills">
+      {% for group, items in activities.skills.items() %}<dt>{{ group }}</dt><dd>{{ items | join(' · ') }}</dd>{% endfor %}
+      <dt>Languages</dt><dd>{% for l in activities.languages %}{{ l.name }} ({{ l.level | lower }}){% if not loop.last %} · {% endif %}{% endfor %}</dd>
+    </dl>
+    <h3>Field experience</h3>
+    <ul class="doc-compact">
+      {% for f in activities.field_experience %}<li><span class="doc-date-inline">{{ f.year }}</span> {{ f.text }}</li>{% endfor %}
+    </ul>
+  </section>
+
+  <section class="doc-section">
+    <h2>Affiliations, service and awards</h2>
+    <dl class="doc-skills">
+      <dt>Memberships</dt><dd>{{ activities.memberships | map(attribute='name') | join(' · ') }}</dd>
+      <dt>Networks</dt><dd>{{ activities.networks | map(attribute='name') | join(' · ') }}</dd>
+      <dt>Peer review</dt><dd>{{ activities.peer_review.journals | join(' · ') }}</dd>
+    </dl>
+    <h3>Awards and scholarships</h3>
+    <ul class="doc-compact">{% for x in activities.awards %}<li><span class="doc-date-inline">{{ x.year }}</span> {{ x.title }}, {{ x.where }}.</li>{% endfor %}</ul>
+    <h3>Short courses and certificates</h3>
+    <ul class="doc-compact">{% for c in activities.courses %}<li><span class="doc-date-inline">{{ c.year }}</span> {{ c.title }}, {{ c.where }}.</li>{% endfor %}</ul>
+  </section>
+
+  <p class="doc-footer muted">Referees available on request. Last updated {{ build_date.strftime('%B %Y') }} · Online: {{ site_url }}/cv/</p>
 </div>
 {% endblock %}

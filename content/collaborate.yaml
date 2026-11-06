@@ -1,0 +1,50 @@
+# ---------------------------------------------------------------------------
+# COLLABORATE: four entry points and the enquiry form options.
+# Research supervision is worded as mentoring / methodological guidance because
+# there is no formal university appointment (DESIGN.md, section 7).
+# ---------------------------------------------------------------------------
+
+intro: >-
+  I am open to meaningful professional engagements and partnerships. If your
+  work aligns with these interests, I would be pleased to explore opportunities
+  for collaboration.
+
+entry_points:
+  - id: research
+    title: Research collaboration
+    who: Universities, research institutes and scientists interested in joint research.
+    text: Joint research and scientific publications in hydrology, groundwater, soil moisture, hydrological data and modelling.
+    value: research
+  - id: mentoring
+    title: Academic mentoring
+    who: Prospective PhD and MSc students seeking methodological guidance or potential research collaboration.
+    text: Research mentoring, methodological guidance in hydrology and data analysis, and support with proposals and scientific writing.
+    value: mentoring
+  - id: partnership
+    title: Institutional partnerships
+    who: International organisations, government agencies, NGOs and development partners.
+    text: International development initiatives, data and monitoring partnerships, capacity development and strategic water-management projects.
+    value: partnership
+  - id: consulting
+    title: Technical consulting
+    who: Organisations seeking expertise in hydrology, water resources and environmental data.
+    text: Technical advisory and consulting assignments, programme reviews and expert input.
+    value: consulting
+
+also_open_to:
+  - Joint research and scientific publications
+  - PhD and MSc research collaboration and mentoring
+  - Technical advisory and consulting assignments
+  - International development initiatives
+  - Conference keynotes, expert panels and workshops
+  - Strategic advisory engagements in water and environmental management
+
+# Options in the enquiry form's "area of interest" menu
+interests:
+  - {value: research, label: Research collaboration}
+  - {value: mentoring, label: Academic mentoring}
+  - {value: partnership, label: Institutional partnership}
+  - {value: consulting, label: Technical consulting}
+  - {value: speaking, label: Keynote, workshop or speaking invitation}
+  - {value: advisory, label: Advisory board or expert panel}
+  - {value: other, label: Something else}

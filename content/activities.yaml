@@ -1,57 +1,134 @@
 # ---------------------------------------------------------------------------
-# TEACHING, SERVICE, SKILLS & LANGUAGES
+# TEACHING, SERVICE, AFFILIATIONS, AWARDS, SKILLS & LANGUAGES
+# Source: Curriculum Vitae (Nov 2026).
 # ---------------------------------------------------------------------------
 
 teaching:
   - year: "2021"
-    title: Guest lecture
+    title: "Guest lecturer, MSc module \"Groundwater adaptation to global change impacts\""
     where: IHE Delft Institute for Water Education
   - year: "2018–2021"
-    title: Co-supervision of Bachelor's and Master's theses
-    where: University of Freiburg
+    title: Co-supervision and mentoring of Bachelor's and Master's students
+    where: Chair of Hydrological Modelling and Water Resources, University of Freiburg
+
+supervision:
+  - level: Master's
+    student: Marvin Lorff
+    year: ""
+    topic: Deciphering the impact of climate and hydrology on recession-based discharge analysis
+  - level: Bachelor's
+    student: Larissa Bulka
+    year: "2020"
+    topic: Estimation of karst aquifer drainage properties in Puerto Rico
+  - level: Bachelor's
+    student: Simon Fahrländer
+    year: "2019"
+    topic: Karst springs characterisation in contrasting climates
+  - level: Bachelor's
+    student: Tamara Leins
+    year: "2019"
+    topic: Characterisation of karst systems in Africa and the Middle East
+  - level: Intern
+    student: Kübra Özdemir
+    year: "2018"
+    topic: Applicability of traditional recession analysis approaches to karst spring hydrographs
 
 service:
+  - year: "2023–"
+    title: Initiator and organiser of EGU data-services session and ISMN splinter meeting
+    where: EGU General Assembly
   - year: "2022"
-    title: Co-convener, large-sample hydrology session
+    title: Co-convener, Large Sample Hydrology session
     where: EGU General Assembly, Vienna
   - year: "2019"
-    title: Organising committee member
-    where: 46th IAH Congress, Málaga
-  # TODO add peer review (journals you review for), memberships (IAH, EGU, AGU…)
+    title: Organising team, 46th IAH Congress
+    where: Málaga, Spain
+  - year: "2019"
+    title: Co-organiser, PhD workshop on hydrological modelling across landscapes
+    where: University of Freiburg
+  - year: ""
+    title: Chair of sessions, annual hydrology workshop
+    where: University of Freiburg
 
-# Optional blocks: uncomment and fill in; each appears on the site only when it has entries.
-# memberships:
-#   - name: International Association of Hydrogeologists (IAH)
-#     since: "2017"
-#   - name: European Geosciences Union (EGU)
-# awards:
-#   - year: "2015"
-#     title: Erasmus Mundus scholarship
-#     where: European Commission
-# peer_review:
-#   journals: [Hydrology and Earth System Sciences, Journal of Hydrology]
+memberships:
+  - name: European Geosciences Union (EGU)
+  - name: American Geophysical Union (AGU)
+  - name: International Association of Hydrogeologists (IAH)
+
+networks:
+  - name: IAHS HELPING working groups
+    detail: Understanding Drivers and Feedbacks of Soil Moisture Variability · Co-Creating Water Knowledge · Measurements and Observations in the XXI Century (MOXXI)
+  - name: EURO-FRIEND
+    detail: Member
+  - name: European Groundwater Drought Initiative (EGDI)
+    detail: Participating member
+  - name: Integrated Drought Monitoring Programme (IDMP)
+    detail: Community member
+
+awards:
+  - year: "2021"
+    title: DAAD research-exchange scholarship, University of Victoria, Canada
+    where: German Academic Exchange Service
+  - year: "2015–2017"
+    title: Full scholarship, Erasmus Mundus Joint Master's, Groundwater and Global Change
+    where: European Union
+  - year: "2011"
+    title: Best graduating student, Department of Agricultural Engineering
+    where: Olabisi Onabanjo University, Nigeria
+
+peer_review:
+  journals: [Water Resources Research, Journal of Hydrology, Earth System Science Data]   # TODO confirm ESSD is reviewing (CV lists it under "Journal")
+
+courses:
+  - year: "2019"
+    title: Advanced Hydrogeological Studies
+    where: University of Málaga and Spanish Geological Survey
+  - year: "2017"
+    title: Advanced class in Translating Science to Application
+    where: UNESCO-IHE, the Netherlands
+  - year: "2016"
+    title: Project management in water management contexts
+    where: UNESCO-IHE, the Netherlands
+  - year: "2016"
+    title: Scientific writing and communication
+    where: Technische Universität Dresden
+  - year: "2016"
+    title: WASH in humanitarian and development projects
+    where: TU Dresden and Arche Nova
+  - year: "2016"
+    title: Public participation theory and methodology for sustainable management of groundwater
+    where: Instituto Superior Técnico, Portugal
+  - year: "2015"
+    title: Remote sensing and GIS applications in hydrology
+    where: Instituto Superior Técnico, Portugal
+
+field_experience:
+  - year: "2018"
+    text: Hydrogeological investigations and installation of 270 soil moisture probes at three sites in Spain, the UK and Germany (90 probes per site).
+  - year: "2017"
+    text: Ground-truthing of land-use maps classified from Landsat 5 and Sentinel-2; hydrological investigation and water-utility mapping in Arusha, Tanzania.
+  - year: "2016"
+    text: "Hydrogeological field campaign in Digne-les-Bains, France: infiltration and tracer tests, discharge measurement, geophysical investigation."
 
 skills:
-  Hydrology:
+  Hydrology & water resources:
+    - Hydrological and groundwater modelling
     - Karst & groundwater hydrology
     - Recession & hydrograph analysis
-    - Hydrological / groundwater modelling
     - Climate & land-use impact assessment
-  Data science:
-    - Python (scientific stack)
+  Data & digital:
+    - Programming & large-data analysis
+    - Database management, SQL
     - Machine learning
-    - Large-sample data management
-    - GIS & spatial analysis          # TODO verify
-  Web & communication:
-    - Django
-    - WordPress
-    - HTML / CSS / JavaScript
-    - Science communication
+    - GIS & remote sensing
+  Communication & engagement:
+    - Science communication & public relations
+    - Stakeholder engagement
+    - Workshop & event convening
+    - Web development (Django, WordPress, HTML/CSS/JS)
 
 languages:
   - name: English
-    level: Fluent             # TODO
-  # - name: German
-  #   level: TODO
-  # - name: Yoruba
-  #   level: TODO
+    level: Professional proficiency
+  - name: German
+    level: Basic

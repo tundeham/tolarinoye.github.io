@@ -1,33 +1,105 @@
 # ---------------------------------------------------------------------------
-# EXPERTISE & LEADERSHIP: four to six competency areas shown as cards.
-# DRAFT wording built from your verified record: please review/adjust.
-#   evidence: concrete proof points (keep them factual and checkable)
+# EXPERTISE
+#   cards:     six homepage cards (each links to a page)
+#   areas:     five capability areas on the Expertise page
+#              (problems solved + outputs a partner can expect)
+# Statements describe capability and experience, not appointments held.
 # ---------------------------------------------------------------------------
 
-- title: Water-resources science
-  text: Groundwater and karst hydrology, from process understanding to large-scale assessment of how aquifers respond to climate and land-use change.
-  evidence:
-    - First global open database of karst spring discharge (400+ springs)
-    - Automated methods for recession analysis and classification
-    - Scenario assessment of urbanisation and climate effects on groundwater
+cards:
+  - title: Hydrology & Water Resources
+    text: Hydrological processes, water assessment and modelling.
+    href: expertise/#hydrology
+    icon: drop
+  - title: Earth Observation & GIS
+    text: Geospatial analysis, remote sensing and validation.
+    href: expertise/#geospatial
+    icon: globe
+  - title: Environmental Data Systems
+    text: Data infrastructure, integration and management.
+    href: expertise/#data
+    icon: layers
+  - title: Climate & Water Security
+    text: Drought monitoring, resilience and climate impacts.
+    href: expertise/#soil-moisture
+    icon: sun
+  - title: International Cooperation
+    text: Scientific partnerships and development programmes.
+    href: about/#international
+    icon: network
+  - title: Water Policy & Advisory
+    text: Strategic advice and evidence-based water management.
+    href: advisory/#strategic
+    icon: compass
 
-- title: Data, digital & open science
-  text: Building and curating hydrological datasets, workflows and data services that others can find, trust and reuse.
-  evidence:
-    - Led WoKaS, a community-sourced global dataset published openly
-    - Data products and web services for the International Soil Moisture Network
-    - Machine learning and large-sample methods in hydrology
+areas:
+  - id: hydrology
+    num: "01"
+    title: Hydrology and water resources assessment
+    lead: Understanding how much water there is, where it goes and how it will change.
+    problems:
+      - How do aquifers and catchments respond to climate and land-use change?
+      - How can water availability be assessed where data are scarce?
+      - Which processes control recharge, storage and low flows?
+    outputs:
+      - Hydrological and water-balance assessments
+      - Scenario analyses for urbanisation and climate change
+      - Recession, hydrograph and aquifer characterisation
+      - Clear technical reports with documented uncertainty
+    evidence: PhD on karst aquifer hydrodynamics; Arusha, Tanzania groundwater study; groundwater projects in Nigeria.
 
-- title: Evidence for decision-making
-  text: Translating technical results into clear, usable evidence for planners, managers and policy makers working on water security and climate adaptation.
-  evidence:
-    - Resource assessments designed for water-management use
-    - Climate and urbanisation scenarios for a fast-growing African city (Arusha)
-    - Public-facing communication for a global monitoring network
+  - id: soil-moisture
+    num: "02"
+    title: Soil moisture and hydroclimatic monitoring
+    lead: Building and using observations that show how wet or dry a landscape really is.
+    problems:
+      - How can satellite and model soil moisture be validated against ground measurements?
+      - How can drought and water stress be tracked consistently across regions?
+      - How can observation networks be extended and kept reliable?
+    outputs:
+      - Guidance on soil moisture monitoring networks and data providers
+      - Harmonised, quality-controlled observation datasets
+      - Interpretation of hydroclimatic data for drought and water-security questions
+    evidence: Scientific Officer for the International Soil Moisture Network; installation of 270 soil moisture probes at three European field sites (2018).
 
-- title: International collaboration & capacity
-  text: Working across institutions, disciplines and countries, and developing the next generation of water professionals.
-  evidence:
-    - Joint M.Sc. across three European universities; research in four countries
-    - Co-convened an EGU session; organising committee of the 46th IAH Congress
-    - Supervised Bachelor's and Master's theses; guest lecturer at IHE Delft
+  - id: geospatial
+    num: "03"
+    title: Geospatial analysis, Earth observation and modelling
+    lead: Linking satellite, model and field information into usable evidence.
+    problems:
+      - How reliable are Earth observation products at the local scale?
+      - How can land-use and land-cover change be linked to water balance?
+      - Where can machine learning add value to hydrological prediction?
+    outputs:
+      - Ground-truthing and validation of remote-sensing products
+      - GIS-based spatial analysis for water resources questions
+      - Large-sample and machine-learning analyses with reproducible workflows
+    evidence: Land-use mapping from Landsat 5 and Sentinel-2 with field validation; large-sample hydrology; remote sensing and GIS training (IST Lisbon).
+
+  - id: data
+    num: "04"
+    title: Environmental data management and digital infrastructure
+    lead: Making water data findable, trustworthy and usable.
+    problems:
+      - How can heterogeneous data from many providers be integrated and quality-controlled?
+      - How can databases and web services be designed for long-term, open access?
+      - How can a data service reach and serve its user community?
+    outputs:
+      - Data acquisition, harmonisation and quality-assurance workflows
+      - Database design and data-product development
+      - Front-end web delivery and user-facing documentation
+    evidence: WoKaS (400+ springs); ISMN data products and web services; SQL and database management.
+
+  - id: governance
+    num: "05"
+    title: Water information systems and scientific data governance
+    lead: Connecting data centres, institutions and communities around shared standards.
+    problems:
+      - How can national and global data centres cooperate rather than duplicate?
+      - How can open, transboundary data sharing be made routine and trusted?
+      - How can scientific data services be explained to funders and policy makers?
+    outputs:
+      - Strategic communication and stakeholder engagement for data services
+      - Convening of expert communities, workshops and side events
+      - Input to open-data and data-sharing policies
+    evidence: Cross-institutional EGU session with ISMN, GRDC, GWDC, IGRAC and GTN-H; engagement with UNESCO-IHP, WMO and GCOS structures.

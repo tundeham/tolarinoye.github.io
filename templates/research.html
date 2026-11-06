@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% import "_macros.html" as m %}
+
+{% block title %}Research and Publications | {{ profile.name }}, Hydrologist{% endblock %}
+{% block description %}Research themes, projects and peer-reviewed publications in groundwater, karst hydrology, soil moisture and water information systems, including the WoKaS global karst spring dataset.{% endblock %}
+
+{% block content %}
+{% set p = profile %}
+{{ m.page_header("Research", "Research and publications", research.intro) }}
+
+{# ---------------------------------------------------------------- flagship: WoKaS #}
+{% set wokas = featured_pubs | selectattr('venue', 'equalto', 'Scientific Data') | first %}
+<section class="section">
+  <div class="container">
+    <article class="spotlight">
+      <div class="spotlight-body">
+        <p class="eyebrow eyebrow-light">Featured · Scientific Data, 2020</p>
+        <h2>WoKaS: the first global open database of karst spring discharge</h2>
+        <p>Karst aquifers supply drinking water to a large part of the world's population, yet their behaviour was hard to compare because observations were scattered across literature, agencies and research groups. WoKaS brings these records together, harmonised and openly available, so that researchers and water managers can learn from karst systems in contrasting climates.</p>
+        <p class="spotlight-meta">400+ springs · open data · peer-reviewed in <em>Scientific Data</em></p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="https://doi.org/{{ wokas.doi }}" target="_blank" rel="noopener">Read the paper</a>
+        </div>
+      </div>
+      <p class="spotlight-cite small">{{ m.citation(wokas, p.surname) }}</p>
+    </article>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- themes #}
+<section class="section section-mist" id="themes">
+  <div class="container">
+    {{ m.head("Research themes", "Areas of focus") }}
+    <div class="table-wrap">
+      <table class="themes">
+        <thead><tr><th scope="col">Research area</th><th scope="col">Focus</th></tr></thead>
+        <tbody>
+          {% for t in research.themes %}<tr><th scope="row">{{ t.area }}</th><td>{{ t.focus }}</td></tr>{% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- projects #}
+<section class="section" id="projects">
+  <div class="container">
+    {{ m.head("Research and projects", "Roles, contributions and outputs") }}
+    <div class="projects">
+      {% for pr in projects %}
+      <article class="project">
+        <header>
+          <p class="card-meta">{{ pr.theme }}</p>
+          <h3>{{ pr.name }}</h3>
+          <p class="project-role"><span class="label">Role</span> {{ pr.role }} · {{ pr.years }}</p>
+        </header>
+        <div>
+          <p>{{ pr.summary }}</p>
+          {% if pr.contributions %}
+          <h4 class="mini-head">Contributions</h4>
+          <ul class="tl-points">{% for c in pr.contributions %}<li>{{ c }}</li>{% endfor %}</ul>
+          {% endif %}
+          <p class="card-outcome"><span class="label">Key outputs</span> {{ pr.outcome }}</p>
+          {% if pr.link %}<p><a class="link-arrow" href="{{ pr.link }}" target="_blank" rel="noopener">{{ pr.link_label or 'Learn more' }}</a></p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <h3 class="subhead">Further project participation</h3>
+    <ul class="plain-list">
+      {% for x in projects_participations %}<li><span class="mono muted">{{ x.years }}</span> {{ x.name }}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# ---------------------------------------------------------------- publications #}
+<section class="section section-mist" id="publications">
+  <div class="container">
+    {{ m.head("Scientific publications", "Peer-reviewed output", "Names in bold mark my contributions. Citation counts and the full record are available through my profiles.") }}
+    {% if pub_types | length > 1 %}
+    <div class="filters" role="group" aria-label="Filter publications">
+      <button class="filter is-active" data-filter="all" aria-pressed="true">All <span>{{ publications | length }}</span></button>
+      {% for key, label in pub_types %}
+      <button class="filter" data-filter="{{ key }}" aria-pressed="false">{{ label }} <span>{{ publications | selectattr('type', 'equalto', key) | list | length }}</span></button>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <ol class="pubs" reversed>
+      {% for pub in publications %}
+      <li class="pub" data-type="{{ pub.type }}" data-n="{{ publications | length - loop.index0 }}">
+        <p class="pub-cite">{{ m.citation(pub, p.surname) }}</p>
+        {% if pub.summary %}<p class="pub-summary">{{ pub.summary }}</p>{% endif %}
+        <p class="pub-links">{{ m.pub_links(pub) }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+    {% if in_review %}
+    <h3 class="subhead">Submitted / in review</h3>
+    <ul class="pubs pubs-plain">
+      {% for pub in in_review %}
+      <li class="pub pub-nonum"><p class="pub-cite">{{ m.citation(pub, p.surname) }}</p><p class="pub-links">{{ m.pub_links(pub) }}</p></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <ul class="profile-inline">
+      {% if p.links.orcid %}<li><a class="link-arrow" href="{{ p.links.orcid }}" target="_blank" rel="noopener me">ORCID</a></li>{% endif %}
+      {% if p.links.researchgate %}<li><a class="link-arrow" href="{{ p.links.researchgate }}" target="_blank" rel="noopener me">ResearchGate</a></li>{% endif %}
+      {% if p.links.scholar %}<li><a class="link-arrow" href="{{ p.links.scholar }}" target="_blank" rel="noopener me">Google Scholar</a></li>{% endif %}
+    </ul>
+  </div>
+</section>
+
+{{ m.cta_band("Interested in joint research?", "I am open to collaboration with universities, research institutes and scientists working on groundwater, soil moisture and hydrological data.", ("Collaborate with me", root ~ "collaborate/")) }}
+{% endblock %}
