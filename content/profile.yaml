@@ -168,8 +168,8 @@ credibility:
   - value: "400+"
     label: karst springs in WoKaS
     detail: the first global open karst-spring discharge database (Scientific Data, 2020)
-  - value: "UNESCO"
-    label: ICWRGC since 2021
+  - value: "ICWRGC"
+    label: (UNESCO Cat 2) since 2021
     detail: global soil moisture data, outreach and international partnerships
 
 # Institutional engagement shown on the homepage and About page
